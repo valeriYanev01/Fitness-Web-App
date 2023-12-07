@@ -1,25 +1,24 @@
 import express from "express";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
 
-import User from "./models/userModel.js";
-import workoutRouter from "./routes/workoutRoutes.js";
+import { userRouter } from "./routes/userRoutes.js";
+import { workoutRouter } from "./routes/workoutRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
+const URI = process.env.URI;
+const PORT = process.env.PORT;
+
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT;
-const URI = process.env.URI;
-
-// workout routes
+// routes
 app.use("/api/workouts", workoutRouter);
-
-// user routes
+app.use("/api/users", userRouter);
 
 mongoose.connect(URI).then(() => {
   app.listen(PORT, () => console.log(`App is connected to DB running on port: ${PORT}`));

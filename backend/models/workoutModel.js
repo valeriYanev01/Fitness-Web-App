@@ -6,19 +6,19 @@ const workoutSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
     reps: {
       type: Number,
       required: true,
     },
-
     load: {
       type: Number,
       required: true,
+    },
+    day: {
+      type: String,
     },
   },
   { timestamps: true }
 );
 
-const WorkoutModel = mongoose.model("userWorkout", workoutSchema);
-export default WorkoutModel;
+export const workoutModel = mongoose.model("workouts", workoutSchema);
