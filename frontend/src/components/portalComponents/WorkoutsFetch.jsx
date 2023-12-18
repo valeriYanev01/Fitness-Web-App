@@ -18,7 +18,6 @@ const WorkoutsFetch = () => {
 
   return (
     <div>
-      Hello
       {workouts &&
         workouts.map((workout) => (
           <ul key={workout._id}>

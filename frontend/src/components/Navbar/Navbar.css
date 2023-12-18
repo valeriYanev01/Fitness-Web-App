@@ -15,19 +15,23 @@
   margin-bottom: 70px;
 }
 
-.navigation-list li a {
+.navigation-list li a,
+footer li a {
   color: #f1f3f5;
 }
 
-.navigation-list li a:visited {
+.navigation-list li a:visited,
+footer li a:visited {
   color: #f1f3f5;
 }
 
-.navigation-list li a.active {
+.navigation-list li a.active,
+footer li a.active {
   color: #ffa726;
 }
 
-.navigation-list li a::after {
+.navigation-list li a::after,
+footer li a::after {
   display: block;
   content: "";
   border-bottom: solid 3px #ffa726;
@@ -36,11 +40,13 @@
   transition: transform 250ms ease-in-out;
 }
 
-.navigation-list li a:hover::after {
+.navigation-list li a:hover::after,
+footer li a:hover::after {
   transform: scaleX(1);
 }
 
-.navigation-list {
+.navigation-list,
+footer {
   list-style: none;
   display: flex;
   gap: 60px;

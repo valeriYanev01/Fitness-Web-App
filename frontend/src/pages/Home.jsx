@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Price from "../components/homeComponents/Price";
-import { Link } from "react-router-dom";
+import Features from "../components/homeComponents/Features";
 
 const Home = () => {
   return (
@@ -36,9 +37,21 @@ const Home = () => {
           fitness dreams a reality. Begin your transformation with MindCraft Fitness today!
         </p>
         <Link to="/" className="home-section-intro-link">
-          Learn More
+          See More
         </Link>
       </section>
+
+      <section className="home-about">
+        <h2>Benefits and Features</h2>
+        <div className="home-about-features-display">
+          <Features image={"Images/Home-Area.jpg"} content={"Fitness Area of 25,000 m²"} />
+          <Features image={"Images/Home-Trainers.jpg"} content={"Personal Trainers and Nutritionists"} />
+          <Features image={"Images/Home-Sauna.jpg"} content={"Spa and Relaxing Area"} />
+          <Features image={"Images/Home-Pool.jpg"} content={"Indoor Swimming Pool, 25m Length"} />
+        </div>
+      </section>
+
+      <footer></footer>
     </div>
   );
 };
