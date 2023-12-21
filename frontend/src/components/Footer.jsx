@@ -1,21 +1,36 @@
-import React from "react";
-import "./Footer.css";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
+import "./Footer.css";
 import Links from "./Navbar/Links";
+import Modal from "./Modal";
 
 const Footer = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <footer>
       <div className="disclaimer">
         <div>
-          Disclaimer: Educational App
+          Disclaimer: <span className="disclaimer-underline">Educational App</span>
           <br />
-          <span className="disclaimer-more">
-            Click for <Link className="disclaimer-more-link">more</Link>
-          </span>
+          <p className="disclaimer-more">
+            Click for{" "}
+            <Link
+              className="disclaimer-more-link"
+              onClick={() => {
+                setOpenModal(true);
+              }}
+            >
+              more
+            </Link>
+          </p>
           <p>This app was created by Valeri Yanev</p>
           <p>
-            Check out my <Link className="disclaimer-more-link">portfolio</Link>
+            Check out my{" "}
+            <Link className="disclaimer-more-link" to="https://valeriyanev.vercel.app/" target="blank">
+              portfolio
+            </Link>
           </p>
         </div>
       </div>
@@ -38,6 +53,18 @@ const Footer = () => {
       <ul className="links">
         <Links />
       </ul>
+      {createPortal(
+        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+          The images used in this app are sourced from various places on the internet and are intended for illustrative
+          purposes only. All images remain the property of their respective owners. The information provided in this app
+          is for general informational purposes only and should not be considered as professional medical advice. It is
+          not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your
+          physician or other qualified health provider with any questions you may have regarding a medical condition.
+          Users are advised to consult with a qualified healthcare professional before making any health-related
+          decisions based on the information provided in this app.
+        </Modal>,
+        document.getElementById("disclaimer-modal")
+      )}
     </footer>
   );
 };

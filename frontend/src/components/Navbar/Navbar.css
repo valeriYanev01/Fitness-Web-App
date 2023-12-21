@@ -12,7 +12,7 @@
 }
 
 .navigation-container {
-  margin-bottom: 70px;
+  margin-bottom: 69px;
 }
 
 .navigation-list li a,
@@ -37,6 +37,9 @@ footer li a::after {
   border-bottom: solid 3px #ffa726;
   transform: scaleX(0);
   transform-origin: 0% 50%;
+}
+
+.navigation-list li a::after {
   transition: transform 250ms ease-in-out;
 }
 
@@ -45,12 +48,15 @@ footer li a:hover::after {
   transform: scaleX(1);
 }
 
+.navigation-list {
+  margin-right: 100px;
+}
+
 .navigation-list,
 footer {
   list-style: none;
   display: flex;
   gap: 60px;
-  margin-right: 100px;
   font-size: 18px;
 }
 

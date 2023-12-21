@@ -1,17 +1,18 @@
 footer {
-  margin: 20px;
+  padding: 10px;
   color: #f1f3f5;
   display: flex;
   gap: 100px;
   justify-content: start;
+  background: #212529;
 }
 
 .disclaimer {
   padding-left: 100px;
 }
 
-.disclaimer-more {
-  cursor: pointer;
+.disclaimer-underline {
+  text-decoration: underline;
 }
 
 .disclaimer-more-link {

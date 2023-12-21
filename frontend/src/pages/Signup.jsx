@@ -1,7 +1,60 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import "./Signup.css";
+
+import { LoginContext } from "../context/LoginContext";
 
 const Signup = () => {
-  return <div>Signup</div>;
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState("");
+  const [signupError, setSignupError] = useState("");
+
+  const { setLoggedIn } = useContext(LoginContext);
+
+  const signup = () => {
+    axios
+      .post("http://localhost:6969/api/users/signup", { email, password })
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data.data));
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        setSignupError(err.response.data.error);
+      });
+  };
+
+  return (
+    <div
+      className="signup"
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          signup();
+        }
+      }}
+    >
+      <h2 className="signup-heading">Signup</h2>
+      <div>
+        <div className="signup-email-container">
+          <label>Email Address:</label>
+          <input onChange={(e) => setEmail(e.target.value)} type="email" />
+        </div>
+        <br />
+        <div className="signup-password-container">
+          <label>Password:</label>
+          <input onChange={(e) => setPassword(e.target.value)} type="password" />
+        </div>
+        <br />
+        <div className="signup-confirm-password-container">
+          <label>Confirm Password:</label>
+          <input type="password" />
+        </div>
+        <p className="signup-error">{signupError}</p>
+        <span className="signup-button" onClick={signup}>
+          Sign up
+        </span>
+      </div>
+    </div>
+  );
 };
 
 export default Signup;
