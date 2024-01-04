@@ -8,12 +8,7 @@ import Signup from "./Signup";
 const Account = () => {
   const [sign, setSign] = useState(false);
 
-  const { loggedIn, setLoggedIn } = useContext(LoginContext);
-
-  const logout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem("user");
-  };
+  const { loggedIn } = useContext(LoginContext);
 
   return (
     <div className="account-page">
@@ -22,7 +17,6 @@ const Account = () => {
         {loggedIn ? (
           <div>
             <p>Logged In</p>
-            <span onClick={logout}>Logout</span>
           </div>
         ) : !sign ? (
           <div>

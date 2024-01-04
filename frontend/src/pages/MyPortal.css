@@ -1,0 +1,54 @@
+.myportal-page {
+  display: flex;
+  gap: 30px;
+}
+
+.myportal-dashboard {
+  width: 20%;
+  padding: 30px;
+  background: #ff5050;
+  color: #f1f3f5;
+  display: block;
+}
+
+.myportal-dashboard-links {
+  list-style: none;
+}
+
+.myportal-dashboard-links a:visited {
+  color: #f1f3f5;
+}
+
+.outlet {
+  display: block;
+  background: #a9a9a9;
+  width: 50%;
+  padding: 30px;
+  height: 90vh;
+  position: relative;
+}
+
+.myportal-closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0 0;
+  padding: 10px;
+  color: #212529;
+}
+
+.myportal-closeBtn:hover {
+  background: #ff5050;
+}
+
+.myportal-outletName {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px 20px 0 20px;
+  padding: 5px;
+}
+
+.hideBtn {
+  display: none;
+}
