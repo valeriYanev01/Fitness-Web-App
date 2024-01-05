@@ -1,7 +1,8 @@
 .workouts-fetch {
-  height: 75vh;
+  height: 70vh;
   margin: 50px 20px;
   width: 23vw;
+  overflow: auto;
 }
 
 .workouts-fetch-list {
@@ -15,6 +16,19 @@
   padding-top: 20px;
 }
 
+.workouts-fetch-loading {
+  margin: 50px 20px;
+}
+
+.workouts-single-workout {
+  position: relative;
+}
+
+.single-workout-value {
+  position: absolute;
+  left: 100px;
+}
+
 .workouts-single-workout input {
   border-radius: 3px;
   border-color: #212529;
@@ -22,17 +36,13 @@
   height: 20px;
   padding: 5px;
   margin-left: 5px;
+  position: absolute;
+  left: 100px;
 }
 
-.single-workout-title {
-  height: 25px;
-}
-
+.single-workout-title,
+.single-workout-reps,
 .single-workout-load {
-  height: 25px;
-}
-
-.single-workout-reps {
   height: 25px;
 }
 

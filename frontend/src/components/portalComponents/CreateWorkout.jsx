@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { WorkoutContext } from "../../context/WorkoutContext";
+import "./CreateWorkout.css";
 
 const CreateWorkout = () => {
   const [exercise, setExercise] = useState("");
@@ -21,24 +22,33 @@ const CreateWorkout = () => {
   };
 
   return (
-    <>
-      <div>
-        <label>Exercise:</label>
-        <input onChange={(e) => setExercise(e.target.value)} />
-        <label>Weight:</label>
-        <input onChange={(e) => setWeight(e.target.value)} />
-        <label>Reps:</label>
-        <input onChange={(e) => setReps(e.target.value)} />
+    <div className="create-workout">
+      <div className="create-workout-info">
+        <div className="create-workout-info-title">
+          <span>Exercise:</span>
+          <input autoComplete="off" onChange={(e) => setExercise(e.target.value)} />
+        </div>
+
+        <div className="create-workout-info-load">
+          <span>Weight:</span>
+          <input autoComplete="off" onChange={(e) => setWeight(e.target.value)} />
+        </div>
+
+        <div className="create-workout-info-reps">
+          <span>Repetitions:</span>
+          <input autoComplete="off" onChange={(e) => setReps(e.target.value)} />
+        </div>
       </div>
-      <div
+      <span
+        className="create-workout-button"
         onClick={() => {
           setShowSettings("Show Workout");
           newWorkout();
         }}
       >
-        CreateWorkout
-      </div>
-    </>
+        Add
+      </span>
+    </div>
   );
 };
 

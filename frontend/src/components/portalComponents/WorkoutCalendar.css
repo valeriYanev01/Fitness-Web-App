@@ -73,3 +73,31 @@ abbr {
 .react-calendar__tile--active {
   color: #ffb951;
 }
+
+.create-new-workout-btn-container {
+  margin: 50px 0 0 0;
+}
+
+.create-new-workout-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background: #ffb951;
+  font-weight: 700;
+}
+
+.create-new-workout-btn:hover {
+  animation: changeCreateWorkoutButton 0.2s forwards;
+}
+
+@keyframes changeCreateWorkoutButton {
+  from {
+    background: #ffb951;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}

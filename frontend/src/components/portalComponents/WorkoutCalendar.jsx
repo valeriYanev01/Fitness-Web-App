@@ -6,7 +6,6 @@ import { CalendarContext } from "../../context/CalendarContext";
 
 const WorkoutCalendar = () => {
   const [calendarLoaded, setCalendarLoaded] = useState(false);
-  const [showCreateWorkoutVisibility, setShowCreateWorkoutVisibility] = useState(false);
 
   const { setShowSettings, setLoading } = useContext(WorkoutContext);
   const { setWorkoutDate } = useContext(CalendarContext);
@@ -24,6 +23,7 @@ const WorkoutCalendar = () => {
       <Calendar
         calendarType="iso8601"
         className="Workouts-Calendar"
+        defaultValue={new Date()}
         minDate={new Date(new Date().setFullYear(new Date().getFullYear() - 2))}
         minDetail="year"
         maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 1))}
@@ -31,7 +31,6 @@ const WorkoutCalendar = () => {
         nextLabel="Next"
         onClickDay={(e) => {
           setShowSettings("Show Workout");
-          setShowCreateWorkoutVisibility(true);
           setWorkoutDate(e);
           setLoading(true);
         }}
@@ -40,17 +39,9 @@ const WorkoutCalendar = () => {
         showNeighboringMonth={false}
       />
 
-      {showCreateWorkoutVisibility ? (
-        <div
-          onClick={() => {
-            setShowSettings("Create Workout");
-          }}
-        >
-          Create Workout
-        </div>
-      ) : (
-        ""
-      )}
+      <div className="create-new-workout-btn-container" onClick={() => setShowSettings("Create Workout")}>
+        <span className="create-new-workout-btn">Add new workout</span>
+      </div>
     </>
   );
 };

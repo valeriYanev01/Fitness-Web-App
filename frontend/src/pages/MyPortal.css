@@ -6,7 +6,7 @@
 .myportal-dashboard {
   width: 20%;
   padding: 30px;
-  background: #ff5050;
+  background: #d11a2a;
   color: #f1f3f5;
   display: block;
 }
@@ -29,24 +29,37 @@
 }
 
 .myportal-closeBtn {
+  font-size: 30px;
   position: absolute;
   top: 0;
   right: 0;
   margin: 20px 20px 0 0;
-  padding: 10px;
+  padding: 5px 10px;
   color: #212529;
 }
 
 .myportal-closeBtn:hover {
-  background: #ff5050;
+  animation: changeCloseBtnColor 0.2s forwards;
+}
+
+@keyframes changeCloseBtnColor {
+  from {
+    background: none;
+  }
+  to {
+    background: #d11a2a;
+  }
 }
 
 .myportal-outletName {
+  font-size: 32px;
   position: absolute;
   top: 0;
   left: 0;
   margin: 20px 20px 0 20px;
   padding: 5px;
+  cursor: default;
+  letter-spacing: 1px;
 }
 
 .hideBtn {

@@ -18,7 +18,9 @@ const WorkoutsFetch = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:6969/api/workouts", { params: { date: workoutDate.toISOString() } })
+      .get("http://localhost:6969/api/workouts", {
+        params: { date: workoutDate },
+      })
       .then((data) => {
         setLoading(false);
         setEditWorkout(false);
@@ -59,7 +61,7 @@ const WorkoutsFetch = () => {
   return (
     <>
       {loading ? (
-        <div>Loading</div>
+        <div className="workouts-fetch-loading">Loading</div>
       ) : (
         <div className="workouts-fetch">
           {workouts.length > 0 ? (
@@ -68,32 +70,37 @@ const WorkoutsFetch = () => {
                 <div className="single-workout-title">
                   <span>Exercise:</span>
                   {workout._id === currentItem && editWorkout ? (
-                    <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input autoComplete="off" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
                   ) : (
-                    <span>{workout.title}</span>
+                    <span className="single-workout-value">{workout.title}</span>
                   )}
                 </div>
 
                 <div className="single-workout-load">
                   <span>Weight:</span>
                   {workout._id === currentItem && editWorkout ? (
-                    <input id="load" value={load} onChange={(e) => setLoad(e.target.value)} />
+                    <input autoComplete="off" id="load" value={load} onChange={(e) => setLoad(e.target.value)} />
                   ) : (
-                    <span>{workout.load}</span>
+                    <span className="single-workout-value">{workout.load}</span>
                   )}
                 </div>
 
                 <div className="single-workout-reps">
                   <span>Repetitions:</span>
                   {workout._id === currentItem && editWorkout ? (
-                    <input id="reps" value={reps} onChange={(e) => setReps(e.target.value)} />
+                    <input autoComplete="off" id="reps" value={reps} onChange={(e) => setReps(e.target.value)} />
                   ) : (
-                    <span>{workout.reps}</span>
+                    <span className="single-workout-value">{workout.reps}</span>
                   )}
                 </div>
 
                 <div className="single-workout-buttons">
-                  <span className="workout-buttons-delete" onClick={() => handleDelete(workout._id)}>
+                  <span
+                    className="workout-buttons-delete"
+                    onClick={() => {
+                      handleDelete(workout._id);
+                    }}
+                  >
                     Delete
                   </span>
 
@@ -138,7 +145,7 @@ const WorkoutsFetch = () => {
               </div>
             ))
           ) : (
-            <div>No workouts from that day!</div>
+            <div>No workouts!</div>
           )}
         </div>
       )}

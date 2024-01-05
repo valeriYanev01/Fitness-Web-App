@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./MyPortal.css";
 import { LoginContext } from "../context/LoginContext";
@@ -9,14 +9,39 @@ import WorkoutCalendar from "../components/portalComponents/WorkoutCalendar";
 import CreateWorkout from "../components/portalComponents/CreateWorkout";
 import WorkoutsFetch from "../components/portalComponents/WorkoutsFetch";
 import { PortalContext } from "../context/PortalContext";
+import { LocationContext } from "../context/LocationContext";
+import BMICalculator from "../components/portalComponents/BMICalculator";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");
+  const [showCalculator, setShowCalculator] = useState(false);
 
   const { loggedIn } = useContext(LoginContext);
   const { outletName, setOutletName, closeBtnContent, setCloseBtnContent } = useContext(PortalContext);
   const { showSettings, setShowSettings } = useContext(WorkoutContext);
   const { showCalendar, setShowCalendar } = useContext(CalendarContext);
+  const { setCurrentLocation, currentLocation } = useContext(LocationContext);
+
+  useEffect(() => {
+    if (currentLocation === "/myportal/workouts") {
+      const storedOutletName = localStorage.getItem("outlet_name");
+      const storedCloseBtnContent = localStorage.getItem("close_button_content");
+      const storedShowSettings = localStorage.getItem("settings_visibility");
+      const storedShowCalendar = localStorage.getItem("calendar_visibility");
+
+      if (storedOutletName) setOutletName(storedOutletName);
+      if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
+      if (storedShowSettings) setShowSettings("Show Workout");
+      if (storedShowCalendar) setShowCalendar(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("outlet_name", outletName);
+    localStorage.setItem("close_button_content", JSON.stringify(closeBtnContent));
+    localStorage.setItem("settings_visibility", showSettings);
+    localStorage.setItem("calendar_visibility", showCalendar);
+  }, [outletName, closeBtnContent, showCalendar, showCalendar]);
 
   const greet = useUser();
 
@@ -33,8 +58,11 @@ const MyPortal = () => {
                     onClick={() => {
                       setOutletName("Workouts");
                       setShowCalendar(true);
-                      setCloseBtnContent("Close");
+                      setShowCalculator(false);
+                      setCloseBtnContent(<span>&times;</span>);
                       setCloseBtnStyle("");
+                      setShowSettings("Show Workout");
+                      setCurrentLocation("/myportal/workouts");
                     }}
                     to="workouts"
                   >
@@ -46,8 +74,11 @@ const MyPortal = () => {
                     onClick={() => {
                       setOutletName("Calculator");
                       setShowCalendar(false);
-                      setCloseBtnContent("Close");
+                      setShowCalculator(true);
+                      setCloseBtnContent(<span>&times;</span>);
                       setCloseBtnStyle("");
+                      setShowSettings(null);
+                      setCurrentLocation("/myportal/bmi-calculator");
                     }}
                     to="bmi-calculator"
                   >
@@ -69,6 +100,7 @@ const MyPortal = () => {
 
       <div className="outlet">
         {showCalendar && <WorkoutCalendar />}
+        {showCalculator && <BMICalculator />}
 
         <h2 className="myportal-outletName">{outletName}</h2>
         <Link to="/myportal">
@@ -80,6 +112,7 @@ const MyPortal = () => {
               setCloseBtnContent(null);
               setShowSettings(null);
               setShowCalendar(false);
+              setShowCalculator(false);
             }}
           >
             {closeBtnContent}

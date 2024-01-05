@@ -1,7 +1,8 @@
 import React from "react";
+import "./BMICalculator.css";
 
 const BMICalculator = () => {
-  return <div>BMICalculator</div>;
+  return <div className="bmi-calculator"></div>;
 };
 
 export default BMICalculator;
