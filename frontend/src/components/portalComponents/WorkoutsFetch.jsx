@@ -3,6 +3,7 @@ import axios from "axios";
 import "./WorkoutsFetch.css";
 import { CalendarContext } from "../../context/CalendarContext";
 import { WorkoutContext } from "../../context/WorkoutContext";
+import WorkoutList from "./WorkoutList";
 
 const WorkoutsFetch = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -10,8 +11,6 @@ const WorkoutsFetch = () => {
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
-  const [currentItem, setCurrentItem] = useState("");
-  const [editBtnContent, setEditBtnContent] = useState("Edit");
 
   const { workoutDate } = useContext(CalendarContext);
   const { loading, setLoading } = useContext(WorkoutContext);
@@ -66,83 +65,20 @@ const WorkoutsFetch = () => {
         <div className="workouts-fetch">
           {workouts.length > 0 ? (
             workouts.map((workout) => (
-              <div key={workout._id} className="workouts-single-workout">
-                <div className="single-workout-title">
-                  <span>Exercise:</span>
-                  {workout._id === currentItem && editWorkout ? (
-                    <input autoComplete="off" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-                  ) : (
-                    <span className="single-workout-value">{workout.title}</span>
-                  )}
-                </div>
-
-                <div className="single-workout-load">
-                  <span>Weight:</span>
-                  {workout._id === currentItem && editWorkout ? (
-                    <input autoComplete="off" id="load" value={load} onChange={(e) => setLoad(e.target.value)} />
-                  ) : (
-                    <span className="single-workout-value">{workout.load}</span>
-                  )}
-                </div>
-
-                <div className="single-workout-reps">
-                  <span>Repetitions:</span>
-                  {workout._id === currentItem && editWorkout ? (
-                    <input autoComplete="off" id="reps" value={reps} onChange={(e) => setReps(e.target.value)} />
-                  ) : (
-                    <span className="single-workout-value">{workout.reps}</span>
-                  )}
-                </div>
-
-                <div className="single-workout-buttons">
-                  <span
-                    className="workout-buttons-delete"
-                    onClick={() => {
-                      handleDelete(workout._id);
-                    }}
-                  >
-                    Delete
-                  </span>
-
-                  {workout._id === currentItem && editBtnContent === "Discard" ? (
-                    <span
-                      className="workout-buttons-discard"
-                      onClick={() => {
-                        setEditBtnContent("Edit");
-                        setEditWorkout(false);
-                      }}
-                    >
-                      Discard Changes
-                    </span>
-                  ) : (
-                    <span
-                      className="workout-buttons-edit"
-                      onClick={() => {
-                        setEditWorkout(true);
-                        setCurrentItem(workout._id);
-                        setTitle(workout.title);
-                        setLoad(workout.load);
-                        setReps(workout.reps);
-                        setEditBtnContent("Discard");
-                      }}
-                    >
-                      Edit
-                    </span>
-                  )}
-
-                  {workout._id === currentItem && editWorkout && (
-                    <span
-                      className="workout-buttons-update"
-                      onClick={() => {
-                        setEditBtnContent("Edit");
-                        handleUpdate(workout._id);
-                      }}
-                    >
-                      Update
-                    </span>
-                  )}
-                </div>
-              </div>
+              <WorkoutList
+                key={workout._id}
+                workout={workout}
+                title={title}
+                load={load}
+                reps={reps}
+                onSetTitle={setTitle}
+                onSetLoad={setLoad}
+                onSetReps={setReps}
+                editWorkout={editWorkout}
+                onSetEditWorkout={setEditWorkout}
+                onHandleDelete={handleDelete}
+                onHandleUpdate={handleUpdate}
+              />
             ))
           ) : (
             <div>No workouts!</div>

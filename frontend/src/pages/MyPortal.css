@@ -24,6 +24,7 @@
   background: #a9a9a9;
   width: 50%;
   padding: 30px;
+  min-height: 600px;
   height: 90vh;
   position: relative;
 }

@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const CalendarContext = createContext();
 
-export const CalendarContextProvicer = ({ children }) => {
+export const CalendarContextProvider = ({ children }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [workoutDate, setWorkoutDate] = useState(new Date().toISOString());
 

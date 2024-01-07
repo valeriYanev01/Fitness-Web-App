@@ -19,7 +19,7 @@ const Login = () => {
       .post("http://localhost:6969/api/users/login", { email, password })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
-        navigate("/");
+        navigate("/myportal");
         setLoggedIn(true);
       })
       .catch((err) => {

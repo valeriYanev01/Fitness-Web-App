@@ -12,6 +12,9 @@ export const LocationContextProvider = ({ children }) => {
       localStorage.removeItem("settings_visibility");
       localStorage.removeItem("calendar_visibility");
     }
+    if (currentLocation !== "/myportal/bmi-calculator") {
+      localStorage.removeItem("calculator_visibility");
+    }
   });
 
   return (
@@ -25,3 +28,5 @@ export const LocationContextProvider = ({ children }) => {
     </LocationContext.Provider>
   );
 };
+
+// to be used in MyPortal.jsx and Links.jsx
