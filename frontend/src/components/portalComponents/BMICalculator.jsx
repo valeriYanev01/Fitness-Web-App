@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./BMICalculator.css";
 import { CalculatorContext } from "../../context/CalculatorContext";
 
 const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => {
   const [age, setAge] = useState("25");
-  const [gender, setGender] = useState("male");
   const [height, setHeight] = useState(175);
   const [weight, setWeight] = useState(70);
   const [feet, setFeet] = useState(5);
@@ -51,28 +50,17 @@ const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => 
         </div>
         <div className="calculator-gender calculator-container-info">
           <span className="calculator-label">Gender</span>
-
           <input
             className="calculator-input-male"
             type="radio"
             name="calculator-gender"
             id="male"
             defaultChecked={true}
-            onClick={() => setGender("male")}
           />
-          <span className="calculator-label-male" onClick={() => setGender("male")}>
-            Male
-          </span>
-          <input
-            className="calculator-input-female"
-            type="radio"
-            name="calculator-gender"
-            id="female"
-            onClick={() => setGender("female")}
-          />
-          <span className="calculator-label-female" onClick={() => setGender("female")}>
-            Female
-          </span>
+          <span className="calculator-label-male">Male</span>
+
+          <input className="calculator-input-female" type="radio" name="calculator-gender" id="female" />
+          <span className="calculator-label-female">Female</span>
         </div>
 
         {metricUnits && (
@@ -148,7 +136,12 @@ const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => 
             setBmiResultVisibility(true);
             metricUnits
               ? setResult((weight / Math.pow(height / 100, 2)).toFixed(1))
-              : setResult((703 * (pounds / ((feet * 12 + inches) * (feet * 12 + inches)))).toFixed(1));
+              : setResult(
+                  (
+                    (703 * Number(pounds)) /
+                    ((parseInt(feet) * 12 + parseInt(inches)) * (parseInt(feet) * 12 + parseInt(inches)))
+                  ).toFixed(1)
+                );
           }}
         >
           Calculate
