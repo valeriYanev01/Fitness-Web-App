@@ -17,6 +17,7 @@ const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => 
     <div className="bmi-calculator">
       <div className="calculator-units">
         <span
+          className={usUnits ? "calculator-units-selected" : ""}
           onClick={() => {
             setMetricUnits(false);
             setUsUnits(true);
@@ -25,6 +26,7 @@ const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => 
           US Units
         </span>
         <span
+          className={`${metricUnits && "calculator-units-selected"}`}
           onClick={() => {
             setUsUnits(false);
             setMetricUnits(true);

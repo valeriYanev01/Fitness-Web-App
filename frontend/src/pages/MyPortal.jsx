@@ -13,6 +13,7 @@ import CreateWorkout from "../components/portalComponents/CreateWorkout";
 import WorkoutsFetch from "../components/portalComponents/WorkoutsFetch";
 import BMICalculator from "../components/portalComponents/BMICalculator";
 import BMIResult from "../components/portalComponents/BMIResult";
+import useLogout from "../hooks/useLogout";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");
@@ -26,6 +27,8 @@ const MyPortal = () => {
   const { showCalendar, setShowCalendar } = useContext(CalendarContext);
   const { result } = useContext(CalculatorContext);
   const { setCurrentLocation, currentLocation } = useContext(LocationContext);
+
+  const logout = useLogout();
 
   useEffect(() => {
     if (currentLocation === "/myportal/workouts") {
@@ -74,6 +77,7 @@ const MyPortal = () => {
               <ul className="myportal-dashboard-links">
                 <li>
                   <Link
+                    className={showCalendar ? "myportal-dashboard-selected" : ""}
                     onClick={() => {
                       setOutletName("Workouts");
                       setShowCalendar(true);
@@ -85,11 +89,12 @@ const MyPortal = () => {
                     }}
                     to="workouts"
                   >
-                    Workouts &rarr;
+                    Workouts <span className="second-arrow"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
+                    className={showCalculator ? "myportal-dashboard-selected" : ""}
                     onClick={() => {
                       setOutletName("Calculator");
                       setShowCalendar(false);
@@ -101,10 +106,14 @@ const MyPortal = () => {
                     }}
                     to="bmi-calculator"
                   >
-                    BMI Calculator &rarr;
+                    BMI Calculator <span className="second-arrow"></span>
                   </Link>
                 </li>
               </ul>
+
+              <div className="myportal-logout" onClick={logout}>
+                Logout
+              </div>
             </div>
           </>
         ) : (

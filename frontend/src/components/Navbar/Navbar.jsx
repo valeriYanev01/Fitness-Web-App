@@ -1,24 +1,18 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../Logo";
 import Links from "./Links";
 
 import { LoginContext } from "../../context/LoginContext";
 import useUser from "../../hooks/useUser";
+import useLogout from "../../hooks/useLogout";
 
 const Navbar = () => {
-  const { loggedIn, setLoggedIn } = useContext(LoginContext);
-
-  const navigate = useNavigate();
+  const { loggedIn } = useContext(LoginContext);
 
   const greet = useUser();
-
-  const logout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem("user");
-    navigate("/");
-  };
+  const logout = useLogout();
 
   return (
     <div className="navigation-container">

@@ -6,12 +6,17 @@
   margin-left: 45px;
 }
 
+.calculator-units-selected {
+  -webkit-box-shadow: inset 10px 0 0 -5px #ffb951;
+  -moz-box-shadow: inset 10px 0 0 -5px #ffb951;
+  box-shadow: inset 10px 0 0 -5px #ffb951;
+}
+
 .calculator-units span:not(:first-child) {
   margin-left: 10px;
 }
 
 .calculator-units span {
-  border: none;
   padding: 10px;
   cursor: pointer;
   background: #f1f3f5;

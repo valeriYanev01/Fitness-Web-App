@@ -9,14 +9,35 @@
   background: #d11a2a;
   color: #f1f3f5;
   display: block;
+  position: relative;
 }
 
 .myportal-dashboard-links {
   list-style: none;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.myportal-dashboard-links li:not(:first-child) {
+  margin-top: 10px;
 }
 
 .myportal-dashboard-links a:visited {
   color: #f1f3f5;
+}
+
+.myportal-dashboard-selected {
+  color: #212529 !important;
+}
+
+.second-arrow {
+  border: solid #f1f3f5;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 5px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .outlet {
@@ -65,4 +86,10 @@
 
 .hideBtn {
   display: none;
+}
+
+.myportal-logout {
+  position: absolute;
+  bottom: 20px;
+  cursor: pointer;
 }
