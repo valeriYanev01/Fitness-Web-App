@@ -4,6 +4,7 @@ import "./WorkoutsFetch.css";
 import { CalendarContext } from "../../context/CalendarContext";
 import { WorkoutContext } from "../../context/WorkoutContext";
 import WorkoutList from "./WorkoutList";
+import { LoginContext } from "../../context/LoginContext";
 
 const WorkoutsFetch = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -14,11 +15,15 @@ const WorkoutsFetch = () => {
 
   const { workoutDate } = useContext(CalendarContext);
   const { loading, setLoading } = useContext(WorkoutContext);
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
     axios
       .get("http://localhost:6969/api/workouts", {
         params: { date: workoutDate },
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
       })
       .then((data) => {
         setLoading(false);
@@ -34,7 +39,7 @@ const WorkoutsFetch = () => {
   const handleDelete = (id) => {
     setLoading(true);
     axios
-      .delete(`http://localhost:6969/api/workouts/${id}`)
+      .delete(`http://localhost:6969/api/workouts/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
       .then(() => {
         setLoading(false);
       })
@@ -47,7 +52,11 @@ const WorkoutsFetch = () => {
   const handleUpdate = (id) => {
     setLoading(true);
     axios
-      .put(`http://localhost:6969/api/workouts/${id}`, { title, load, reps })
+      .put(
+        `http://localhost:6969/api/workouts/${id}`,
+        { title, load, reps },
+        { headers: { Authorization: `Bearer ${user.token}` } }
+      )
       .then(() => {
         setLoading(false);
       })

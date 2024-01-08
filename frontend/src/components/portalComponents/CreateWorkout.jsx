@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { WorkoutContext } from "../../context/WorkoutContext";
 import "./CreateWorkout.css";
+import { LoginContext } from "../../context/LoginContext";
 
 const CreateWorkout = () => {
   const [exercise, setExercise] = useState("");
@@ -9,10 +10,15 @@ const CreateWorkout = () => {
   const [reps, setReps] = useState(null);
 
   const { setShowSettings } = useContext(WorkoutContext);
+  const { user } = useContext(LoginContext);
 
   const newWorkout = () => {
     axios
-      .post("http://localhost:6969/api/workouts", { title: exercise, load: weight, reps })
+      .post(
+        "http://localhost:6969/api/workouts",
+        { title: exercise, load: weight, reps },
+        { headers: { Authorization: `Bearer ${user.token}` } }
+      )
       .then((data) => {
         console.log(data);
       })

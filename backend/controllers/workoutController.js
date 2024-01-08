@@ -2,9 +2,10 @@ import { workoutModel } from "../models/workoutModel.js";
 
 export const allWorkouts = async (req, res) => {
   const { date } = req.query;
+  const user_id = req.user._id;
 
   try {
-    const findAllWorkouts = await workoutModel.find({});
+    const findAllWorkouts = await workoutModel.find({ user_id });
 
     let workouts = findAllWorkouts.filter((workout) => {
       const workoutDay = new Date(workout.createdAt.getTime());
@@ -28,7 +29,6 @@ export const allWorkouts = async (req, res) => {
 
 export const singleWorkout = async (req, res) => {
   const { id } = req.params;
-  const { date } = req.query;
 
   try {
     const workout = await workoutModel.findById({ _id: id });
@@ -40,10 +40,10 @@ export const singleWorkout = async (req, res) => {
 
 export const createWorkout = async (req, res) => {
   const { title, reps, load } = req.body;
-  const workout = { title, reps, load };
 
   try {
-    const createWorkout = await workoutModel.create(workout);
+    const user_id = req.user._id;
+    const createWorkout = await workoutModel.create({ title, reps, load, user_id });
     res.status(200).json({ createWorkout });
   } catch (err) {
     return res.status(400).json({ error: err.message });
