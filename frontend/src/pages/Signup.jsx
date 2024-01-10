@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
-
 import { LoginContext } from "../context/LoginContext";
 
 const Signup = () => {

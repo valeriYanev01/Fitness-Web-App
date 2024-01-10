@@ -4,9 +4,9 @@ import "./Navbar.css";
 import Logo from "../Logo";
 import Links from "./Links";
 
-import { LoginContext } from "../../context/LoginContext";
 import useUser from "../../hooks/useUser";
 import useLogout from "../../hooks/useLogout";
+import { LoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
   const { loggedIn } = useContext(LoginContext);

@@ -1,19 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./MyPortal.css";
-import { LoginContext } from "../context/LoginContext";
-import { WorkoutContext } from "../context/WorkoutContext";
-import { CalendarContext } from "../context/CalendarContext";
-import { PortalContext } from "../context/PortalContext";
-import { LocationContext } from "../context/LocationContext";
-import { CalculatorContext } from "../context/CalculatorContext";
-import useUser from "../hooks/useUser";
 import WorkoutCalendar from "../components/portalComponents/WorkoutCalendar";
 import CreateWorkout from "../components/portalComponents/CreateWorkout";
 import WorkoutsFetch from "../components/portalComponents/WorkoutsFetch";
 import BMICalculator from "../components/portalComponents/BMICalculator";
 import BMIResult from "../components/portalComponents/BMIResult";
-import useLogout from "../hooks/useLogout";
+import Panel from "../components/portalComponents/Panel";
+import { PortalContext } from "../context/MyPortal Page/PortalContext";
+import { WorkoutContext } from "../context/MyPortal Page/WorkoutContext";
+import { CalendarContext } from "../context/MyPortal Page/CalendarContext";
+import { CalculatorContext } from "../context/MyPortal Page/CalculatorContext";
+import { LocationContext } from "../context/MyPortal Page/LocationContext";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");
@@ -21,14 +19,11 @@ const MyPortal = () => {
   const [usUnits, setUsUnits] = useState(false);
   const [metricUnits, setMetricUnits] = useState(true);
 
-  const { loggedIn } = useContext(LoginContext);
   const { outletName, setOutletName, closeBtnContent, setCloseBtnContent } = useContext(PortalContext);
   const { showSettings, setShowSettings } = useContext(WorkoutContext);
   const { showCalendar, setShowCalendar } = useContext(CalendarContext);
   const { result } = useContext(CalculatorContext);
-  const { setCurrentLocation, currentLocation } = useContext(LocationContext);
-
-  const logout = useLogout();
+  const { currentLocation } = useContext(LocationContext);
 
   useEffect(() => {
     if (currentLocation === "/myportal/workouts") {
@@ -65,66 +60,13 @@ const MyPortal = () => {
     localStorage.setItem("calculator_visibility", showCalculator);
   }, [closeBtnContent, showSettings, showCalculator, outletName, showCalculator]);
 
-  const greet = useUser();
-
   return (
     <div className="myportal-page">
-      <div className="myportal-dashboard">
-        {loggedIn ? (
-          <>
-            <h2 className="myportal-dashboard-greet">Hello {greet}</h2>
-            <div>
-              <ul className="myportal-dashboard-links">
-                <li>
-                  <Link
-                    className={showCalendar ? "myportal-dashboard-selected" : ""}
-                    onClick={() => {
-                      setOutletName("Workouts");
-                      setShowCalendar(true);
-                      setShowCalculator(false);
-                      setCloseBtnContent(<span>&times;</span>);
-                      setCloseBtnStyle("");
-                      setShowSettings("Show Workout");
-                      setCurrentLocation("/myportal/workouts");
-                    }}
-                    to="workouts"
-                  >
-                    Workouts <span className="second-arrow"></span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className={showCalculator ? "myportal-dashboard-selected" : ""}
-                    onClick={() => {
-                      setOutletName("Calculator");
-                      setShowCalendar(false);
-                      setShowCalculator(true);
-                      setCloseBtnContent(<span>&times;</span>);
-                      setCloseBtnStyle("");
-                      setShowSettings("Show Calculator");
-                      setCurrentLocation("/myportal/bmi-calculator");
-                    }}
-                    to="bmi-calculator"
-                  >
-                    BMI Calculator <span className="second-arrow"></span>
-                  </Link>
-                </li>
-              </ul>
-
-              <div className="myportal-logout" onClick={logout}>
-                Logout
-              </div>
-            </div>
-          </>
-        ) : (
-          <div>
-            You need to be logged in to use this page!{" "}
-            <span>
-              <Link to="/account/login">Login</Link>
-            </span>{" "}
-          </div>
-        )}
-      </div>
+      <Panel
+        showCalculator={showCalculator}
+        setShowCalculator={setShowCalculator}
+        setCloseBtnStyle={setCloseBtnStyle}
+      />
 
       <div className="outlet">
         {showCalendar && <WorkoutCalendar />}

@@ -15,7 +15,6 @@ import Account from "./pages/Account";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import AuthVerify from "./components/AuthVerify";
-
 import { LoginContext } from "./context/LoginContext";
 
 function App() {

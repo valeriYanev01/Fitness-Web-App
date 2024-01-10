@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { WorkoutContext } from "../../context/WorkoutContext";
 import "./CreateWorkout.css";
+import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { LoginContext } from "../../context/LoginContext";
 
 const CreateWorkout = () => {
@@ -9,7 +9,7 @@ const CreateWorkout = () => {
   const [weight, setWeight] = useState(null);
   const [reps, setReps] = useState(null);
 
-  const { setShowSettings } = useContext(WorkoutContext);
+  const { setShowSettings, setLoading } = useContext(WorkoutContext);
   const { user } = useContext(LoginContext);
 
   const newWorkout = () => {
@@ -50,9 +50,19 @@ const CreateWorkout = () => {
         onClick={() => {
           setShowSettings("Show Workout");
           newWorkout();
+          setLoading(true);
         }}
       >
         Add
+      </span>
+      <span
+        className="workout-buttons-discard"
+        onClick={() => {
+          setLoading(true);
+          setShowSettings("Show Workout");
+        }}
+      >
+        Cancel
       </span>
     </div>
   );

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "./WorkoutCalendar.css";
-import { WorkoutContext } from "../../context/WorkoutContext";
-import { CalendarContext } from "../../context/CalendarContext";
+import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
+import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
 
 const WorkoutCalendar = () => {
   const [calendarLoaded, setCalendarLoaded] = useState(false);
@@ -30,9 +30,9 @@ const WorkoutCalendar = () => {
         next2Label={null}
         nextLabel="Next"
         onClickDay={(e) => {
+          setLoading(true);
           setShowSettings("Show Workout");
           setWorkoutDate(e);
-          setLoading(true);
         }}
         prev2Label={null}
         prevLabel="Previous"

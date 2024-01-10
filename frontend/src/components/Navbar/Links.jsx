@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { CalendarContext } from "../../context/CalendarContext";
-import { WorkoutContext } from "../../context/WorkoutContext";
-import { PortalContext } from "../../context/PortalContext";
-import { LocationContext } from "../../context/LocationContext";
+import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
+import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
+import { PortalContext } from "../../context/MyPortal Page/PortalContext";
+import { LocationContext } from "../../context/MyPortal Page/LocationContext";
 
 const Links = () => {
   const { setShowCalendar } = useContext(CalendarContext);

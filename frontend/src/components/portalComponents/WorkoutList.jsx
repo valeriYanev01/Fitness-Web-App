@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 
 const WorkoutList = ({
   workout,
@@ -15,6 +16,8 @@ const WorkoutList = ({
 }) => {
   const [currentItem, setCurrentItem] = useState("");
   const [editBtnContent, setEditBtnContent] = useState("Edit");
+
+  const { setLoading } = useContext(WorkoutContext);
 
   return (
     <div key={workout._id} className="workouts-single-workout">
@@ -49,6 +52,7 @@ const WorkoutList = ({
         <span
           className="workout-buttons-delete"
           onClick={() => {
+            setLoading(true);
             onHandleDelete(workout._id);
           }}
         >
@@ -85,6 +89,7 @@ const WorkoutList = ({
           <span
             className="workout-buttons-update"
             onClick={() => {
+              setLoading(true);
               setEditBtnContent("Edit");
               onHandleUpdate(workout._id);
             }}

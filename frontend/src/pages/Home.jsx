@@ -34,12 +34,16 @@ const Home = () => {
             stronger you is just a workout away. Discover a fitness community dedicated to helping you achieve your
             goals, whether you're aiming to build muscle, lose weight, or enhance your overall well-being. Our
             state-of-the-art facilities, expert trainers, and diverse range of classes are tailored to meet every
-            fitness level. Join us on a journey of empowerment, where every drop of sweat brings you closer to your best
-            self. Let's make your fitness dreams a reality. Begin your transformation with MindCraft Fitness today!
+            fitness level.
           </p>
-          <Link to="/" className="home-section-intro-link">
-            See More
-          </Link>
+          <p>
+            At MindCraft, we understand that fitness is not just a destination; it's a continuous, evolving path. Our
+            diverse range of classes caters to various interests and skill levels, ensuring there's something for
+            everyone. Whether you're a seasoned gym enthusiast or taking your first steps into a healthier lifestyle,
+            our supportive community and expert guidance will empower you every step of the way. Join us on a journey of
+            empowerment, where every drop of sweat brings you closer to your best self. Let's make your fitness dreams a
+            reality. Begin your transformation with MindCraft Fitness today!
+          </p>
         </section>
 
         <section className="home-about">
@@ -50,6 +54,9 @@ const Home = () => {
             <Features image={"Images/Home-Sauna.jpg"} content={"Spa and Relaxing Area"} />
             <Features image={"Images/Home-Pool.jpg"} content={"Indoor Swimming Pool, 25m Length"} />
           </div>
+
+          <h2>{}</h2>
+          <div></div>
         </section>
 
         <footer></footer>

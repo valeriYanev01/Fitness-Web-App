@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./WorkoutsFetch.css";
-import { CalendarContext } from "../../context/CalendarContext";
-import { WorkoutContext } from "../../context/WorkoutContext";
 import WorkoutList from "./WorkoutList";
+import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
+import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { LoginContext } from "../../context/LoginContext";
 
 const WorkoutsFetch = () => {
@@ -18,26 +18,26 @@ const WorkoutsFetch = () => {
   const { user } = useContext(LoginContext);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:6969/api/workouts", {
-        params: { date: workoutDate },
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
-      .then((data) => {
-        setLoading(false);
-        setEditWorkout(false);
-        setWorkouts(data.data.workouts);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-      });
+    const fetchData = () =>
+      axios
+        .get("http://localhost:6969/api/workouts", {
+          params: { date: workoutDate },
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((data) => {
+          setWorkouts(data.data.workouts);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+        });
+    fetchData();
   }, [loading]);
 
   const handleDelete = (id) => {
-    setLoading(true);
     axios
       .delete(`http://localhost:6969/api/workouts/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
       .then(() => {
@@ -50,7 +50,6 @@ const WorkoutsFetch = () => {
   };
 
   const handleUpdate = (id) => {
-    setLoading(true);
     axios
       .put(
         `http://localhost:6969/api/workouts/${id}`,
