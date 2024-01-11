@@ -1,8 +1,8 @@
 .myportal-dashboard {
   width: 20%;
   padding: 30px;
-  background: #d11a2a;
-  color: #f1f3f5;
+  background: #ffb951;
+  color: #212529;
   display: block;
   position: relative;
 }
@@ -18,15 +18,16 @@
 }
 
 .myportal-dashboard-links a:visited {
-  color: #f1f3f5;
+  color: #212529;
 }
 
 .myportal-dashboard-selected {
-  color: #212529 !important;
+  margin-left: 10px;
+  transition: margin 0.2s;
 }
 
 .second-arrow {
-  border: solid #f1f3f5;
+  border: solid #212529;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;

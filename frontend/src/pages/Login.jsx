@@ -38,13 +38,13 @@ const Login = () => {
       <h2 className="login-heading">Login</h2>
       <div>
         <div className="login-email-container">
-          <label>Email Address:</label>
-          <input onChange={(e) => setEmail(e.target.value)} type="email" />
+          <label id="email">Email Address:</label>
+          <input id="email" onChange={(e) => setEmail(e.target.value)} type="email" />
         </div>
         <br />
         <div className="login-password-container">
-          <label>Password:</label>
-          <input onChange={(e) => setPassword(e.target.value)} type="password" />
+          <label id="password">Password:</label>
+          <input id="password" onChange={(e) => setPassword(e.target.value)} type="password" />
         </div>
         <p className="login-error">{loginError}</p>
         <br />

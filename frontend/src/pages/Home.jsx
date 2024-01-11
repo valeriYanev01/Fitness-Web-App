@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Price from "../components/homeComponents/Price";
 import Features from "../components/homeComponents/Features";
 
 const Home = () => {
+  const [isHidden, setIsHidden] = useState(true);
+
   return (
     <>
       <div className="home-page">
+        <img src="Images/Home-Header.jpg" className="header-img" />
         <header>
-          <img src="Images/Home-Header.jpg" className="header-img" />
           <section>
             <h2 className="home-section-motto">
               <span className="home-section-motto-first">Transform the Body, Transcend the Mind</span>
@@ -29,14 +31,15 @@ const Home = () => {
 
         <section className="home-introduction">
           <h1>MindCraft Fitness Club</h1>
-          <p>
+          <p className="home-introduction-first-part">
             Welcome to MindCraft Fitness Club – Where Fitness Meets Progress! At our gym, we believe that a healthier,
             stronger you is just a workout away. Discover a fitness community dedicated to helping you achieve your
             goals, whether you're aiming to build muscle, lose weight, or enhance your overall well-being. Our
             state-of-the-art facilities, expert trainers, and diverse range of classes are tailored to meet every
             fitness level.
           </p>
-          <p>
+
+          <p className={!isHidden ? "notHidden home-introduction-second-part" : "hidden"}>
             At MindCraft, we understand that fitness is not just a destination; it's a continuous, evolving path. Our
             diverse range of classes caters to various interests and skill levels, ensuring there's something for
             everyone. Whether you're a seasoned gym enthusiast or taking your first steps into a healthier lifestyle,
@@ -44,6 +47,18 @@ const Home = () => {
             empowerment, where every drop of sweat brings you closer to your best self. Let's make your fitness dreams a
             reality. Begin your transformation with MindCraft Fitness today!
           </p>
+
+          <div className="home-section-intro-link-container">
+            <Link
+              to="/"
+              className="home-section-intro-link"
+              onClick={() => {
+                isHidden ? setIsHidden(false) : setIsHidden(true);
+              }}
+            >
+              {isHidden ? "See More" : "See Less"}
+            </Link>
+          </div>
         </section>
 
         <section className="home-about">
@@ -54,9 +69,6 @@ const Home = () => {
             <Features image={"Images/Home-Sauna.jpg"} content={"Spa and Relaxing Area"} />
             <Features image={"Images/Home-Pool.jpg"} content={"Indoor Swimming Pool, 25m Length"} />
           </div>
-
-          <h2>{}</h2>
-          <div></div>
         </section>
 
         <footer></footer>

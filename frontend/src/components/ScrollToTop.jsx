@@ -22,7 +22,7 @@ const ScrollToTop = () => {
       className={`scrollToTop ${visible ? "visible" : ""}`}
     >
       <div className="arrow-container">
-        <img className="arrow" src="Svg/upArrow.svg" />
+        <img className="arrow" src="/svg/upArrow.svg" />
       </div>
     </div>
   );

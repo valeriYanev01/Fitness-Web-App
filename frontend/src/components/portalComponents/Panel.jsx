@@ -13,7 +13,7 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
   const { loggedIn } = useContext(LoginContext);
   const { setOutletName, setCloseBtnContent } = useContext(PortalContext);
   const { setShowSettings } = useContext(WorkoutContext);
-  const { showCalendar, setShowCalendar } = useContext(CalendarContext);
+  const { showCalendar, setShowCalendar, setWorkoutDate } = useContext(CalendarContext);
   const { setCurrentLocation } = useContext(LocationContext);
 
   const greet = useUser();
@@ -35,6 +35,7 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
                     setShowCalculator(false);
                     setCloseBtnContent(<span>&times;</span>);
                     setCloseBtnStyle("");
+                    setWorkoutDate(new Date());
                     setShowSettings("Show Workout");
                     setCurrentLocation("/myportal/workouts");
                   }}

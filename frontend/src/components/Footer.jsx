@@ -40,13 +40,13 @@ const Footer = () => {
         <p className="contact3 contacts-padding">Gmail:</p>
 
         <Link target="blank" to="https://www.linkedin.com/in/valeri-yanev-65bbb9277/">
-          <img className="link1" src="/Svg/linkedin.svg" />
+          <img className="link1" src="/svg/linkedin.svg" />
         </Link>
         <Link target="blank" to="https://github.com/valeriYanev01/Fitness-Web-App">
-          <img className="link2" src="/Svg/github2.svg" />
+          <img className="link2" src="/svg/github2.svg" />
         </Link>
         <Link to="mailto:valeri.t.yanev@gmail.com">
-          <img className="link3" src="/Svg/gmail.svg" />
+          <img className="link3" src="/svg/gmail.svg" />
         </Link>
       </div>
 

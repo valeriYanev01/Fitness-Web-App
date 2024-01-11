@@ -1,0 +1,7 @@
+.store-side-panel {
+  width: 20%;
+  color: #212529;
+  min-height: 600px;
+  height: 90vh;
+  border-right: #212529 2px solid;
+}

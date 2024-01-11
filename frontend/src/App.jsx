@@ -4,8 +4,6 @@ import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
-import Plans from "./pages/Plans";
-import StoreMain from "./pages/store/StoreMain";
 import MyPortal from "./pages/MyPortal";
 import WorkoutsFetch from "./components/portalComponents/WorkoutsFetch";
 import BMICalculator from "./components/portalComponents/BMICalculator";
@@ -16,6 +14,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import AuthVerify from "./components/AuthVerify";
 import { LoginContext } from "./context/LoginContext";
+import Store from "./pages/Store";
 
 function App() {
   const { loggedIn } = useContext(LoginContext);
@@ -25,8 +24,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="plans" element={<Plans />} />
-        <Route path="store" element={<StoreMain />} />
+        <Route path="store" element={<Store />} />
         <Route path="myportal" element={<MyPortal />}>
           <Route path="workouts" element={<WorkoutsFetch />} />
           <Route path="bmi-calculator" element={<BMICalculator />} />
