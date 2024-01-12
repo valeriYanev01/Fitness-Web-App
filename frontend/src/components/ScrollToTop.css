@@ -8,6 +8,7 @@
   left: 20px;
   border-radius: 5px;
   display: none;
+  z-index: 9999;
 }
 
 .arrow-container {

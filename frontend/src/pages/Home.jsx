@@ -61,6 +61,8 @@ const Home = () => {
           </div>
         </section>
 
+        <div className="home-breakline"></div>
+
         <section className="home-about">
           <h2>Benefits and Features</h2>
           <div className="home-about-features-display">

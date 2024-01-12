@@ -8,6 +8,7 @@ import { CalendarContextProvider } from "./context/./MyPortal Page/CalendarConte
 import { PortalContextProvider } from "./context/./MyPortal Page/PortalContext.jsx";
 import { LocationContextProvider } from "./context/./MyPortal Page/LocationContext.jsx";
 import { CalculatorContextProvider } from "./context/./MyPortal Page/CalculatorContext.jsx";
+import { ProductTypeContextProvider } from "./context/Store Page/ProductTypeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <PortalContextProvider>
               <LocationContextProvider>
                 <CalculatorContextProvider>
-                  <App />
+                  <ProductTypeContextProvider>
+                    <App />
+                  </ProductTypeContextProvider>
                 </CalculatorContextProvider>
               </LocationContextProvider>
             </PortalContextProvider>

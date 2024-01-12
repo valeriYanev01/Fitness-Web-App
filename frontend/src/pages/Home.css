@@ -114,10 +114,17 @@
   }
 }
 
+.home-breakline {
+  background: #fff;
+  padding: 5px;
+}
+
 .home-about {
   background: #fff;
   padding-top: 100px;
   padding-bottom: 20px;
+  z-index: 99;
+  position: relative;
 }
 
 .home-about h2 {
