@@ -1,0 +1,16 @@
+.products {
+  position: relative;
+  width: 35%;
+}
+
+.gallery-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
