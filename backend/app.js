@@ -5,6 +5,7 @@ import cors from "cors";
 
 import { userRouter } from "./routes/userRoutes.js";
 import { workoutRouter } from "./routes/workoutRoutes.js";
+import { productRouter } from "./routes/produtRouter.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cors());
 // routes
 app.use("/api/workouts", workoutRouter);
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
 
 mongoose.connect(URI).then(() => {
   app.listen(PORT, () => console.log(`App is connected to DB running on port: ${PORT}`));
