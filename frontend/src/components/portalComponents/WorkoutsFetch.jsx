@@ -18,23 +18,25 @@ const WorkoutsFetch = () => {
   const { user } = useContext(LoginContext);
 
   useEffect(() => {
-    const fetchData = () =>
-      axios
-        .get("http://localhost:6969/api/workouts", {
-          params: { date: workoutDate },
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        })
-        .then((data) => {
-          setWorkouts(data.data.workouts);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          console.log(err);
-        });
-    fetchData();
+    if (user) {
+      const fetchData = () =>
+        axios
+          .get("http://localhost:6969/api/workouts", {
+            params: { date: workoutDate },
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          })
+          .then((data) => {
+            setWorkouts(data.data.workouts);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setLoading(false);
+            console.log(err);
+          });
+      fetchData();
+    }
   }, [loading]);
 
   const handleDelete = (id) => {

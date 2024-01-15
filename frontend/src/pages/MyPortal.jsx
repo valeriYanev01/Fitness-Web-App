@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./MyPortal.css";
 import WorkoutCalendar from "../components/portalComponents/WorkoutCalendar";
 import CreateWorkout from "../components/portalComponents/CreateWorkout";
@@ -12,6 +12,7 @@ import { WorkoutContext } from "../context/MyPortal Page/WorkoutContext";
 import { CalendarContext } from "../context/MyPortal Page/CalendarContext";
 import { CalculatorContext } from "../context/MyPortal Page/CalculatorContext";
 import { LocationContext } from "../context/MyPortal Page/LocationContext";
+import { LoginContext } from "../context/LoginContext";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");
@@ -24,31 +25,48 @@ const MyPortal = () => {
   const { showCalendar, setShowCalendar } = useContext(CalendarContext);
   const { result } = useContext(CalculatorContext);
   const { currentLocation } = useContext(LocationContext);
+  const { loggedIn } = useContext(LoginContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentLocation === "/myportal/workouts") {
-      const storedOutletName = localStorage.getItem("outlet_name");
-      const storedCloseBtnContent = localStorage.getItem("close_button_content");
-      const storedShowSettings = localStorage.getItem("settings_visibility");
-      const storedShowCalendar = localStorage.getItem("calendar_visibility");
+      if (!loggedIn) {
+        localStorage.removeItem("calendar_visibility");
+        localStorage.removeItem("close_button_content");
+        localStorage.removeItem("outlet_name");
+        navigate("/myportal");
+      } else {
+        const storedOutletName = localStorage.getItem("outlet_name");
+        const storedCloseBtnContent = localStorage.getItem("close_button_content");
+        const storedShowSettings = localStorage.getItem("settings_visibility");
+        const storedShowCalendar = localStorage.getItem("calendar_visibility");
 
-      if (storedOutletName) setOutletName(storedOutletName);
-      if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
-      if (storedShowSettings) setShowSettings("Show Workout");
-      if (storedShowCalendar) setShowCalendar(true);
-      setOutletName("Workouts");
+        if (storedOutletName) setOutletName(storedOutletName);
+        if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
+        if (storedShowSettings) setShowSettings("Show Workout");
+        if (storedShowCalendar) setShowCalendar(true);
+        setOutletName("Workouts");
+      }
     }
     if (currentLocation === "/myportal/bmi-calculator") {
-      const storedOutletName = localStorage.getItem("outlet_name");
-      const storedCloseBtnContent = localStorage.getItem("close_button_content");
-      const storedShowSettings = localStorage.getItem("settings_visibility");
-      const storedShowCalculator = localStorage.getItem("calculator_visibility");
+      if (!loggedIn) {
+        localStorage.removeItem("calculator_visibility");
+        localStorage.removeItem("close_button_content");
+        localStorage.removeItem("outlet_name");
+        navigate("/myportal");
+      } else {
+        const storedOutletName = localStorage.getItem("outlet_name");
+        const storedCloseBtnContent = localStorage.getItem("close_button_content");
+        const storedShowSettings = localStorage.getItem("settings_visibility");
+        const storedShowCalculator = localStorage.getItem("calculator_visibility");
 
-      if (storedOutletName) setOutletName(storedOutletName);
-      if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
-      if (storedShowSettings) setShowSettings("Show Calculator");
-      if (storedShowCalculator) setShowCalculator(true);
-      setOutletName("Calculator");
+        if (storedOutletName) setOutletName(storedOutletName);
+        if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
+        if (storedShowSettings) setShowSettings("Show Calculator");
+        if (storedShowCalculator) setShowCalculator(true);
+        setOutletName("Calculator");
+      }
     }
   }, [currentLocation]);
 

@@ -1,16 +1,28 @@
-.products {
-  position: relative;
-  width: 35%;
+.store-introduction {
+  font-size: 20px;
+  line-height: 35px;
+  word-spacing: 5px;
+  margin-top: 50px;
 }
 
-.gallery-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+.store-single-product-introduction {
+  font-size: 18px;
+  width: 80%;
+  margin: 50px 0;
+}
+
+.products {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 30px;
   width: 100%;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: auto auto;
+.product-container {
+  display: flex;
+}
+
+.products img {
+  width: 100px;
 }
