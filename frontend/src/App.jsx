@@ -15,12 +15,7 @@ import Login from "./pages/Login";
 import AuthVerify from "./components/AuthVerify";
 import { LoginContext } from "./context/LoginContext";
 import Store from "./pages/Store";
-import Protein from "./components/storeComponents/Protein";
-import Bcaa from "./components/storeComponents/Bcaa";
-import Carbohydrate from "./components/storeComponents/Carbohydrate";
-import Vitamins from "./components/storeComponents/Vitamins";
-import Minerals from "./components/storeComponents/Minerals";
-import Creatine from "./components/storeComponents/Creatine";
+import Products from "./components/storeComponents/Products";
 
 function App() {
   const { loggedIn } = useContext(LoginContext);
@@ -31,12 +26,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="store" element={<Store />}>
-          <Route path="protein" element={<Protein />} />
-          <Route path="creatine" element={<Creatine />} />
-          <Route path="bcaa" element={<Bcaa />} />
-          <Route path="carbohydrate" element={<Carbohydrate />} />
-          <Route path="vitamins" element={<Vitamins />} />
-          <Route path="minerals" element={<Minerals />} />
+          <Route path="protein" element={<Products />} />
+          <Route path="creatine" element={<Products />} />
+          <Route path="bcaa" element={<Products />} />
+          <Route path="carbohydrate" element={<Products />} />
+          <Route path="vitamins" element={<Products />} />
+          <Route path="minerals" element={<Products />} />
         </Route>
         <Route path="myportal" element={<MyPortal />}>
           <Route path="workouts" element={<WorkoutsFetch />} />
