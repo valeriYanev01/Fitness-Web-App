@@ -1,4 +1,12 @@
 .store-page {
   display: flex;
-  gap: 150px;
+  gap: 50px;
+}
+
+.store-introduction {
+  font-size: 20px;
+  line-height: 35px;
+  word-spacing: 5px;
+  margin-top: 50px;
+  width: 60vw;
 }

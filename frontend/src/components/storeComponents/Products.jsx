@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
-import "./Products.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
+import Loading from "../Loading";
+import "./Products.css";
 
 const Products = () => {
   const { type, setType } = useContext(ProductTypeContext);
   const [products, setProducts] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    setLoaded(false);
     axios.get("http://localhost:6969/api/products", { params: { type: type } }).then((data) => {
       setProducts(data.data.getProducts);
+      setLoaded(true);
     });
   }, [type]);
 
@@ -25,24 +29,22 @@ const Products = () => {
 
   return (
     <div className="products-container">
-      {!type ? (
-        <div className="store-introduction">
-          Welcome to our gym supplements store, your one-stop destination for premium fitness nutrition. Elevate your
-          workout experience with our carefully curated selection of high-quality supplements, designed to fuel your
-          performance, support muscle growth, and enhance recovery. Achieve your fitness goals with confidence, as we
-          prioritize excellence in every product we offer. Your journey to a stronger, healthier you starts here!
-        </div>
-      ) : type == "protein" ? (
+      {type == "protein" ? (
         <div className="store-single-product-introduction">
           Whey protein is a high-quality protein derived from milk during the cheese-making process. It contains a
           complete amino acid profile, including essential amino acids that the body cannot produce on its own. This
-          makes whey protein an excellent source of protein for muscle building, repair, and overall health. One of the
-          key reasons whey protein is highly regarded is its rapid absorption by the body. It provides a quick influx of
-          amino acids to the muscles, making it an ideal choice for both pre and post-workout supplementation. This
-          swift absorption helps kickstart the muscle recovery process after exercise and promotes the synthesis of new
-          muscle proteins. Beyond muscle support, whey protein has additional health benefits. It may aid in weight
-          management by promoting satiety and assisting in fat loss while preserving lean muscle mass. Whey protein also
-          contains bioactive peptides that can help support the immune system.
+          makes whey protein an excellent source of protein for muscle building, repair, and overall health.
+          <br />
+          <br />
+          One of the key reasons whey protein is highly regarded is its rapid absorption by the body. It provides a
+          quick influx of amino acids to the muscles, making it an ideal choice for both pre and post-workout
+          supplementation. This swift absorption helps kickstart the muscle recovery process after exercise and promotes
+          the synthesis of new muscle proteins.
+          <br />
+          <br />
+          Beyond muscle support, whey protein has additional health benefits. It may aid in weight management by
+          promoting satiety and assisting in fat loss while preserving lean muscle mass. Whey protein also contains
+          bioactive peptides that can help support the immune system.
         </div>
       ) : type == "creatine" ? (
         <div className="store-single-product-introduction">
@@ -144,20 +146,31 @@ const Products = () => {
           sufficient vitamin intake, but supplements may be recommended when dietary requirements are not met.
         </div>
       ) : null}
+      <p className="products-heading">Products:</p>
       <div className="products">
-        {products.map((product) => (
-          <Link to={`${product.type}/${product._id}`}>
-            <div key={product._id} className="product-container">
-              <div>
-                <p>Name: {product.name}</p>
-                <p>Price: {product.price} EUR</p>
-                {product.weight ? <p>Weight: {product.weight} g</p> : <p>Capsules: {product.capsules}</p>}
-                {product.taste && <p>Taste: {product.taste}</p>}
-              </div>
-              <img src={product.img} />
-            </div>
-          </Link>
-        ))}
+        {!loaded ? (
+          <Loading />
+        ) : (
+          <>
+            {products.map((product) => (
+              <Link key={product._id} to={`/store/${product.type}/${product._id}`}>
+                <div className="product-container">
+                  <div className="product-information">
+                    <p className="products-name">Name: {product.name}</p>
+                    <p className="products-price">Price: {product.price} EUR</p>
+                    {product.weight ? (
+                      <p className="products-weight">Weight: {product.weight} g</p>
+                    ) : (
+                      <p className="products-weight">Capsules: {product.capsules}</p>
+                    )}
+                    {product.taste && <p className="products-taste">Taste: {product.taste}</p>}
+                  </div>
+                  <img className="products-img" src={product.img} />
+                </div>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
