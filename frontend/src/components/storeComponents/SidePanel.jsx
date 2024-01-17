@@ -11,7 +11,7 @@ const SidePanel = () => {
   return (
     <div className="store-side-panel">
       <span
-        className={`${type == "protein" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "protein" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           navigate("protein");
           setType("protein");
@@ -20,7 +20,7 @@ const SidePanel = () => {
         Proteins
       </span>
       <span
-        className={`${type == "creatine" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "creatine" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           navigate("creatine");
           setType("creatine");
@@ -29,7 +29,7 @@ const SidePanel = () => {
         Creatine
       </span>
       <span
-        className={`${type == "bcaa" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "bcaa" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           navigate("bcaa");
           setType("bcaa");
@@ -38,7 +38,7 @@ const SidePanel = () => {
         BCAA
       </span>
       <span
-        className={`${type == "carbohydrate" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "carbohydrate" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           setType("carbohydrate");
           navigate("carbohydrate");
@@ -47,7 +47,7 @@ const SidePanel = () => {
         Carbohydrates
       </span>
       <span
-        className={`${type == "vitamins" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "vitamins" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           setType("vitamins");
           navigate("vitamins");
@@ -56,7 +56,7 @@ const SidePanel = () => {
         Vitamins
       </span>
       <span
-        className={`${type == "minerals" ? "active " : ""}store-side-panel-item`}
+        className={`${type == "minerals" ? "activeProduct " : ""}store-side-panel-item`}
         onClick={() => {
           setType("minerals");
           navigate("minerals");

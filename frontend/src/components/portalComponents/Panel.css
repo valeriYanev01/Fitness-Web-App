@@ -36,8 +36,19 @@
   -webkit-transform: rotate(-45deg);
 }
 
-.myportal-logout {
+.myportal-account-settings {
+  color: #212529;
   position: absolute;
   bottom: 20px;
+}
+
+.myportal-account-settings-creditentials {
   cursor: pointer;
+  padding: 5px;
+}
+
+.myportal-account-settings-logout {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 5px;
 }

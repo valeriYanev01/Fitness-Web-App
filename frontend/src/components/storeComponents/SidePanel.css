@@ -14,7 +14,7 @@
   display: table;
 }
 
-.active {
+.activeProduct {
   margin-left: 10px;
   transition: all 0.2s;
 }

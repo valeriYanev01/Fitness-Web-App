@@ -1,0 +1,33 @@
+.myportal-changecreditentials {
+  margin-top: 100px;
+}
+
+.myportal-changecreditentials-description {
+  font-size: 18px;
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+.myportal-changecreditentials-option:not(:first-child) {
+  margin-top: 10px;
+}
+
+.options-container {
+  margin-top: 20px;
+}
+
+.options-container p {
+  margin-bottom: 10px;
+}
+
+.myportal-changecreditentials-option {
+  cursor: pointer;
+  color: #212529;
+  display: inline-block;
+  padding: 5px;
+}
+
+.myportal-dashboard-selected {
+  margin-left: 10px;
+  transition: margin 0.2s;
+}

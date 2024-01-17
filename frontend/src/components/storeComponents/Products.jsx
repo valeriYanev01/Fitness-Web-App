@@ -153,8 +153,8 @@ const Products = () => {
         ) : (
           <>
             {products.map((product) => (
-              <Link key={product._id} to={`/store/${product.type}/${product._id}`}>
-                <div className="product-container">
+              <div key={product._id} className="product-container">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <div className="product-information">
                     <p className="products-name">Name: {product.name}</p>
                     <p className="products-price">Price: {product.price} EUR</p>
@@ -164,10 +164,13 @@ const Products = () => {
                       <p className="products-weight">Capsules: {product.capsules}</p>
                     )}
                     {product.taste && <p className="products-taste">Taste: {product.taste}</p>}
+                    <Link className="product-seemore" to={`/store/${product.type}/${product._id}`}>
+                      More
+                    </Link>
                   </div>
                   <img className="products-img" src={product.img} />
                 </div>
-              </Link>
+              </div>
             ))}
           </>
         )}

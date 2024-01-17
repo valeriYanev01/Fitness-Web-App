@@ -1,6 +1,6 @@
 .navigation {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 200px;
   background: #212529;
   justify-content: space-between;
@@ -63,7 +63,12 @@ footer {
 .navigation-logo {
   font-size: 26px;
   color: #ffa726;
-  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation-logo img {
+  width: 70px;
 }
 
 .navigation-user {

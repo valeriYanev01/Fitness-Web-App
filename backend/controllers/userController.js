@@ -36,3 +36,50 @@ export const userLogin = async (req, res) => {
     return res.status(400).json({ error: err.message });
   }
 };
+
+export const userChangeUsername = async (req, res) => {
+  const { username } = req.body;
+  const { _id } = req.query;
+
+  try {
+    const user = await userModel.changeUsername(_id, username);
+    res.status(200).json({ user });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+export const userChangeEmail = async (req, res) => {
+  const { oldEmail, newEmail, confirmNewEmail } = req.body;
+  const { _id } = req.query;
+
+  try {
+    const user = await userModel.changeEmail(_id, oldEmail, newEmail, confirmNewEmail);
+    res.status(200).json({ user });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const userChangePassword = async (req, res) => {
+  const { oldPassword, newPassword, confirmNewPassword } = req.body;
+  const { _id } = req.query;
+
+  try {
+    const user = await userModel.changePassword(_id, oldPassword, newPassword, confirmNewPassword);
+    res.status(200).json({ user });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const currentUser = async (req, res) => {
+  const { email } = req.query;
+  try {
+    const user = await userModel.findOne({ email: email });
+    res.status(200).json({ user });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};

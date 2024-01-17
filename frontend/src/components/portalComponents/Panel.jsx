@@ -8,6 +8,7 @@ import { PortalContext } from "../../context/MyPortal Page/PortalContext";
 import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
 import { LocationContext } from "../../context/MyPortal Page/LocationContext";
+import { AccountSettingsContext } from "../../context/MyPortal Page/AccountSettingsContext";
 
 const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
   const { loggedIn } = useContext(LoginContext);
@@ -15,15 +16,16 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
   const { setShowSettings } = useContext(WorkoutContext);
   const { showCalendar, setShowCalendar, setWorkoutDate } = useContext(CalendarContext);
   const { setCurrentLocation } = useContext(LocationContext);
+  const { setShowAccountSettings } = useContext(AccountSettingsContext);
 
-  const greet = useUser();
+  const username = useUser();
   const logout = useLogout();
 
   return (
     <div className="myportal-dashboard">
       {loggedIn ? (
         <div>
-          <h2 className="myportal-dashboard-greet">Hello {greet}</h2>
+          <h2 className="myportal-dashboard-greet">Hello, {username}</h2>
           <div>
             <ul className="myportal-dashboard-links">
               <li>
@@ -32,6 +34,7 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
                   onClick={() => {
                     setOutletName("Workouts");
                     setShowCalendar(true);
+                    setShowAccountSettings(false);
                     setShowCalculator(false);
                     setCloseBtnContent(<span>&times;</span>);
                     setCloseBtnStyle("");
@@ -50,6 +53,7 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
                   onClick={() => {
                     setOutletName("Calculator");
                     setShowCalendar(false);
+                    setShowAccountSettings(false);
                     setShowCalculator(true);
                     setCloseBtnContent(<span>&times;</span>);
                     setCloseBtnStyle("");
@@ -63,9 +67,26 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
               </li>
             </ul>
 
-            <div className="myportal-logout" onClick={logout}>
-              Logout
-            </div>
+            <Link className="myportal-account-settings" to="account">
+              <div
+                className="myportal-account-settings-creditentials"
+                onClick={() => {
+                  setOutletName("Change Account Settings");
+                  setShowCalculator(false);
+                  setShowCalendar(false);
+                  setShowAccountSettings(true);
+                  setCloseBtnContent(<span>&times;</span>);
+                  setShowSettings(null);
+                  setCloseBtnStyle("");
+                  setCurrentLocation("/myportal/account");
+                }}
+              >
+                Change Account Settings
+              </div>
+              <div className="myportal-account-settings-logout" onClick={logout}>
+                Logout
+              </div>
+            </Link>
           </div>
         </div>
       ) : (

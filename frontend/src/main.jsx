@@ -9,24 +9,30 @@ import { PortalContextProvider } from "./context/./MyPortal Page/PortalContext.j
 import { LocationContextProvider } from "./context/./MyPortal Page/LocationContext.jsx";
 import { CalculatorContextProvider } from "./context/./MyPortal Page/CalculatorContext.jsx";
 import { ProductTypeContextProvider } from "./context/Store Page/ProductTypeContext.jsx";
+import { AccountSettingsContextProvider } from "./context/MyPortal Page/AccountSettingsContext.jsx";
+import { SettingsContextProvider } from "./context/MyPortal Page/SettingsContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <LoginContextProvider>
-        <WorkoutContextProvider>
-          <CalendarContextProvider>
-            <PortalContextProvider>
-              <LocationContextProvider>
-                <CalculatorContextProvider>
-                  <ProductTypeContextProvider>
-                    <App />
-                  </ProductTypeContextProvider>
-                </CalculatorContextProvider>
-              </LocationContextProvider>
-            </PortalContextProvider>
-          </CalendarContextProvider>
-        </WorkoutContextProvider>
+        <AccountSettingsContextProvider>
+          <SettingsContextProvider>
+            <WorkoutContextProvider>
+              <CalendarContextProvider>
+                <PortalContextProvider>
+                  <LocationContextProvider>
+                    <CalculatorContextProvider>
+                      <ProductTypeContextProvider>
+                        <App />
+                      </ProductTypeContextProvider>
+                    </CalculatorContextProvider>
+                  </LocationContextProvider>
+                </PortalContextProvider>
+              </CalendarContextProvider>
+            </WorkoutContextProvider>
+          </SettingsContextProvider>
+        </AccountSettingsContextProvider>
       </LoginContextProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -7,12 +7,15 @@ import WorkoutsFetch from "../components/portalComponents/WorkoutsFetch";
 import BMICalculator from "../components/portalComponents/BMICalculator";
 import BMIResult from "../components/portalComponents/BMIResult";
 import Panel from "../components/portalComponents/Panel";
+import ChangeCreditentials from "../components/portalComponents/Account/ChangeCreditentials";
+import AccountSettings from "../components/portalComponents/Account/AccountSettings";
 import { PortalContext } from "../context/MyPortal Page/PortalContext";
 import { WorkoutContext } from "../context/MyPortal Page/WorkoutContext";
 import { CalendarContext } from "../context/MyPortal Page/CalendarContext";
 import { CalculatorContext } from "../context/MyPortal Page/CalculatorContext";
 import { LocationContext } from "../context/MyPortal Page/LocationContext";
-import { LoginContext } from "../context/LoginContext";
+import { AccountSettingsContext } from "../context/MyPortal Page/AccountSettingsContext";
+// import { LoginContext } from "../context/LoginContext";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");
@@ -25,48 +28,42 @@ const MyPortal = () => {
   const { showCalendar, setShowCalendar } = useContext(CalendarContext);
   const { result } = useContext(CalculatorContext);
   const { currentLocation } = useContext(LocationContext);
-  const { loggedIn } = useContext(LoginContext);
+  const { showAccountSettings } = useContext(AccountSettingsContext);
+  // const { loggedIn } = useContext(LoginContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     if (currentLocation === "/myportal/workouts") {
-      if (!loggedIn) {
-        localStorage.removeItem("calendar_visibility");
-        localStorage.removeItem("close_button_content");
-        localStorage.removeItem("outlet_name");
-        navigate("/myportal");
-      } else {
-        const storedOutletName = localStorage.getItem("outlet_name");
-        const storedCloseBtnContent = localStorage.getItem("close_button_content");
-        const storedShowSettings = localStorage.getItem("settings_visibility");
-        const storedShowCalendar = localStorage.getItem("calendar_visibility");
+      const storedOutletName = localStorage.getItem("outlet_name");
+      const storedCloseBtnContent = localStorage.getItem("close_button_content");
+      const storedShowSettings = localStorage.getItem("settings_visibility");
+      const storedShowCalendar = localStorage.getItem("calendar_visibility");
 
-        if (storedOutletName) setOutletName(storedOutletName);
-        if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
-        if (storedShowSettings) setShowSettings("Show Workout");
-        if (storedShowCalendar) setShowCalendar(true);
-        setOutletName("Workouts");
-      }
+      if (storedOutletName) setOutletName(storedOutletName);
+      if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
+      if (storedShowSettings) setShowSettings("Show Workout");
+      if (storedShowCalendar) setShowCalendar(true);
+      setOutletName("Workouts");
     }
     if (currentLocation === "/myportal/bmi-calculator") {
-      if (!loggedIn) {
-        localStorage.removeItem("calculator_visibility");
-        localStorage.removeItem("close_button_content");
-        localStorage.removeItem("outlet_name");
-        navigate("/myportal");
-      } else {
-        const storedOutletName = localStorage.getItem("outlet_name");
-        const storedCloseBtnContent = localStorage.getItem("close_button_content");
-        const storedShowSettings = localStorage.getItem("settings_visibility");
-        const storedShowCalculator = localStorage.getItem("calculator_visibility");
+      // if (!loggedIn) {
+      //   localStorage.removeItem("calculator_visibility");
+      //   localStorage.removeItem("close_button_content");
+      //   localStorage.removeItem("outlet_name");
+      //   navigate("/myportal");
+      // } else {
+      const storedOutletName = localStorage.getItem("outlet_name");
+      const storedCloseBtnContent = localStorage.getItem("close_button_content");
+      const storedShowSettings = localStorage.getItem("settings_visibility");
+      const storedShowCalculator = localStorage.getItem("calculator_visibility");
 
-        if (storedOutletName) setOutletName(storedOutletName);
-        if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
-        if (storedShowSettings) setShowSettings("Show Calculator");
-        if (storedShowCalculator) setShowCalculator(true);
-        setOutletName("Calculator");
-      }
+      if (storedOutletName) setOutletName(storedOutletName);
+      if (storedCloseBtnContent) setCloseBtnContent(<span>&times;</span>);
+      if (storedShowSettings) setShowSettings("Show Calculator");
+      if (storedShowCalculator) setShowCalculator(true);
+      setOutletName("Calculator");
+      // }
     }
   }, [currentLocation]);
 
@@ -96,7 +93,8 @@ const MyPortal = () => {
             setMetricUnits={setMetricUnits}
           />
         )}
-        {!showCalendar && !showCalculator && <div>Select a feature from the menu</div>}
+        {showAccountSettings && <AccountSettings />}
+        {!showCalendar && !showCalculator && !showAccountSettings && <div>Select a feature from the menu</div>}
 
         <h2 className="myportal-outletName">{outletName}</h2>
         <Link to="/myportal">
@@ -123,6 +121,8 @@ const MyPortal = () => {
           <WorkoutsFetch />
         ) : showSettings === "Show Calculator" ? (
           <BMIResult result={result} />
+        ) : showSettings === "Change Creditentials" ? (
+          <ChangeCreditentials />
         ) : null}
       </div>
     </div>

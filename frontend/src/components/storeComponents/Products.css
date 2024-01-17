@@ -15,6 +15,7 @@
   gap: 30px;
   width: 100%;
   margin-bottom: 50px;
+  padding-right: 50px;
 }
 
 .product-container {
@@ -36,8 +37,35 @@
   color: #212529;
 }
 
-.products a:not(:nth-child(3n - 2)) {
+.product-container:not(:nth-child(3n - 2)) {
   border-left: 1px solid #212529;
+}
+
+.product-seemore {
+  padding: 10px;
+  cursor: pointer;
+  background: #f1f3f5;
+  color: #212529;
+  border-radius: 5px;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.product-seemore:hover {
+  animation: changeButtonColor 0.2s forwards;
+}
+
+@keyframes changeButtonColor {
+  from {
+    background: #f1f3f5;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
 }
 
 .product-information p {

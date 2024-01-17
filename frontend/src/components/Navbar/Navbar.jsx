@@ -11,7 +11,7 @@ import { LoginContext } from "../../context/LoginContext";
 const Navbar = () => {
   const { loggedIn } = useContext(LoginContext);
 
-  const greet = useUser();
+  const username = useUser();
   const logout = useLogout();
 
   return (
@@ -26,7 +26,7 @@ const Navbar = () => {
           <li className="navigation-user">
             {loggedIn ? (
               <>
-                <span className="navigation-greet">{greet}</span>
+                <span className="navigation-greet">{username}</span>
                 <div className="navigation-menu">
                   <div className="logout-button" onClick={logout}>
                     Logout
