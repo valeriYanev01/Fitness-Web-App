@@ -17,7 +17,6 @@ const SingleProduct = () => {
 
   const location = useLocation();
 
-  useEffect(() => {}, []);
   const id = location.pathname.split("/")[3];
 
   axios
@@ -36,19 +35,23 @@ const SingleProduct = () => {
   return (
     <div className="store-single-product">
       {price ? (
-        <div>
-          <img src={img} />
-          <p>Product: {name}</p>
-          <p>Price: {price} EUR</p>
-          {type !== "vitamins" && type !== "minerals" ? (
-            <>
-              <p>Flavour: {taste}</p>
-              <p>Weight: {weight} g</p>
-            </>
-          ) : (
-            <p>Caps: {capsules}</p>
-          )}
-          <div className="store-single-product-purchase">Add to Basket</div>
+        <div className="single-product-container">
+          <div>
+            <img src={img} className="single-product-img" />
+          </div>
+          <div className="single-product-info-container">
+            <p className="single-product-name">Product: {name}</p>
+            <p className="single-product-price">Price: {price} EUR</p>
+            {type !== "vitamins" && type !== "minerals" ? (
+              <>
+                <p className="single-product-taste">Flavour: {taste}</p>
+                <p className="single-product-weight">Weight: {weight} g</p>
+              </>
+            ) : (
+              <p className="single-product-caps">Caps: {capsules}</p>
+            )}
+            <div className="single-product-purchase">Add to Basket</div>
+          </div>
         </div>
       ) : (
         <Loading />

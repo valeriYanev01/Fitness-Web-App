@@ -14,7 +14,6 @@ const useUser = () => {
         .get("http://localhost:6969/api/users/", { params: { email: email } })
         .then((data) => {
           setUsername(data.data.user.username);
-          console.log(username);
         })
         .catch((err) => {
           console.log(err);

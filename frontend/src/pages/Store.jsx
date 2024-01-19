@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import SidePanel from "../components/storeComponents/SidePanel";
 import "./Store.css";
 import { Outlet } from "react-router-dom";
 import ProductTypeContext from "../context/Store Page/ProductTypeContext";
+import { LocationContext } from "../context/MyPortal Page/LocationContext";
 
 const Store = () => {
-  const { type } = useContext(ProductTypeContext);
+  const { type, setType } = useContext(ProductTypeContext);
+
+  const { currentLocation } = useContext(LocationContext);
+
+  useEffect(() => {
+    const storedType = localStorage.getItem("type");
+    if (storedType) setType(storedType);
+  }, [currentLocation]);
 
   return (
     <div className="store-page">

@@ -9,7 +9,7 @@ import AuthVerify from "./components/AuthVerify";
 import WorkoutsFetch from "./components/portalComponents/WorkoutsFetch";
 import BMICalculator from "./components/portalComponents/BMICalculator";
 import AccountSettings from "./components/portalComponents/Account/AccountSettings";
-import ChangeCreditentials from "./components/portalComponents/Account/ChangeCreditentials";
+import ChangeCredentials from "./components/portalComponents/Account/ChangeCredentials";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Products from "./components/storeComponents/Products";
@@ -41,9 +41,9 @@ function App() {
           <Route path="workouts" element={<WorkoutsFetch />} />
           <Route path="bmi-calculator" element={<BMICalculator />} />
           <Route path="account" element={<AccountSettings />}>
-            <Route path="change-email" element={<ChangeCreditentials />} />
-            <Route path="change-username" element={<ChangeCreditentials />} />
-            <Route path="change-password" element={<ChangeCreditentials />} />
+            <Route path="change-email" element={<ChangeCredentials />} />
+            <Route path="change-username" element={<ChangeCredentials />} />
+            <Route path="change-password" element={<ChangeCredentials />} />
           </Route>
         </Route>
         <Route path="account" element={loggedIn ? <Navigate to="/" /> : <Account />}>

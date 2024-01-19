@@ -4,52 +4,81 @@ import { Link } from "react-router-dom";
 import { WorkoutContext } from "../../../context/MyPortal Page/WorkoutContext";
 import { SettingsContext } from "../../../context/MyPortal Page/SettingsContext";
 import { AccountSettingsContext } from "../../../context/MyPortal Page/AccountSettingsContext";
+import { LocationContext } from "../../../context/MyPortal Page/LocationContext";
 
-const AccountSettings = () => {
+const AccountSettings = ({
+  setUsername,
+  setOldEmail,
+  setNewEmail,
+  setConfirmNewEmail,
+  setOldPassword,
+  setNewPassword,
+  setConfirmNewPassword,
+}) => {
   const { setShowSettings } = useContext(WorkoutContext);
-  const { setOptionChange } = useContext(SettingsContext);
+  const { optionChange, setOptionChange } = useContext(SettingsContext);
   const { setError } = useContext(AccountSettingsContext);
+  const { setCurrentLocation } = useContext(LocationContext);
+
+  const nullifyCredentialFields = () => {
+    setUsername("");
+    setOldEmail("");
+    setNewEmail("");
+    setConfirmNewEmail("");
+    setOldPassword("");
+    setNewPassword("");
+    setConfirmNewPassword("");
+  };
 
   return (
-    <div className="myportal-changecreditentials">
-      <div className="myportal-changecreditentials-description">
+    <div className="myportal-changecredentials">
+      <div className="myportal-changecredentials-description">
         From here You can change your email address, your password and your username. The username then will be shown
         across the page while you are logged in!
       </div>
       <div className="options-container">
-        <p
-          onClick={() => {
-            setShowSettings("Change Creditentials");
-            setOptionChange("username");
-            setError(null);
-          }}
-        >
-          <Link to="/myportal/account/change-username" className="myportal-changecreditentials-option">
+        <div>
+          <div
+            className={`${optionChange == "username" ? "account-selected" : ""} myportal-changecredentials-option`}
+            onClick={() => {
+              setShowSettings("Change Credentials");
+              setOptionChange("username");
+              setError(null);
+              nullifyCredentialFields();
+              setCurrentLocation("/myportal/account/change-username");
+            }}
+          >
             Change Username <span className="second-arrow"></span>
-          </Link>
-        </p>
-        <p
-          onClick={() => {
-            setShowSettings("Change Creditentials");
-            setOptionChange("email");
-            setError(null);
-          }}
-        >
-          <Link to="/myportal/account/change-email" className="myportal-changecreditentials-option">
+          </div>
+        </div>
+
+        <div>
+          <div
+            className={`${optionChange == "email" ? "account-selected" : ""} myportal-changecredentials-option`}
+            onClick={() => {
+              setShowSettings("Change Credentials");
+              setOptionChange("email");
+              setError(null);
+              nullifyCredentialFields();
+            }}
+          >
             Change Email <span className="second-arrow"></span>
-          </Link>
-        </p>
-        <p
-          onClick={() => {
-            setShowSettings("Change Creditentials");
-            setOptionChange("password");
-            setError(null);
-          }}
-        >
-          <Link to="/myportal/account/change-password" className="myportal-changecreditentials-option">
+          </div>
+        </div>
+
+        <div>
+          <div
+            className={`${optionChange == "password" ? "account-selected" : ""} myportal-changecredentials-option`}
+            onClick={() => {
+              setShowSettings("Change Credentials");
+              setOptionChange("password");
+              setError(null);
+              nullifyCredentialFields();
+            }}
+          >
             Change Password <span className="second-arrow"></span>
-          </Link>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );

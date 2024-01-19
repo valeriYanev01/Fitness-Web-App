@@ -4,28 +4,34 @@ import axios from "axios";
 import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
 import Loading from "../Loading";
 import "./Products.css";
+import { LocationContext } from "../../context/MyPortal Page/LocationContext";
 
 const Products = () => {
-  const { type, setType } = useContext(ProductTypeContext);
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [loadProducts, setLoadProducts] = useState(false);
+
+  const { type, setType } = useContext(ProductTypeContext);
+  const { currentLocation } = useContext(LocationContext);
 
   useEffect(() => {
     setLoaded(false);
+
     axios.get("http://localhost:6969/api/products", { params: { type: type } }).then((data) => {
       setProducts(data.data.getProducts);
       setLoaded(true);
+      setLoadProducts(true);
     });
-  }, [type]);
-
-  useEffect(() => {
-    localStorage.setItem("type", type);
-  });
+  }, [type, loadProducts]);
 
   useEffect(() => {
     const storedType = localStorage.getItem("type");
-    setType(storedType);
-  });
+    if (storedType) setType(storedType);
+  }, [currentLocation]);
+
+  useEffect(() => {
+    localStorage.setItem("type", type);
+  }, [type]);
 
   return (
     <div className="products-container">

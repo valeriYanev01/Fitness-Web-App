@@ -11,7 +11,7 @@ export const LoginContextProvider = ({ children }) => {
     if (user) {
       setLoggedIn(true);
     }
-  }, []);
+  }, [user]);
 
   return <LoginContext.Provider value={{ loggedIn, setLoggedIn, user }}>{children}</LoginContext.Provider>;
 };

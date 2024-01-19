@@ -33,9 +33,9 @@ const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
                   className={showCalendar ? "myportal-dashboard-selected" : ""}
                   onClick={() => {
                     setOutletName("Workouts");
-                    setShowCalendar(true);
                     setShowAccountSettings(false);
                     setShowCalculator(false);
+                    setShowCalendar(true);
                     setCloseBtnContent(<span>&times;</span>);
                     setCloseBtnStyle("");
                     setWorkoutDate(new Date());
