@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
+import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import Loading from "../Loading";
 import "./Products.css";
-import { LocationContext } from "../../context/MyPortal Page/LocationContext";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [loadProducts, setLoadProducts] = useState(false);
 
-  const { type, setType } = useContext(ProductTypeContext);
-  const { currentLocation } = useContext(LocationContext);
+  const { type } = useContext(ProductTypeContext);
 
   useEffect(() => {
     setLoaded(false);
@@ -23,15 +21,6 @@ const Products = () => {
       setLoadProducts(true);
     });
   }, [type, loadProducts]);
-
-  useEffect(() => {
-    const storedType = localStorage.getItem("type");
-    if (storedType) setType(storedType);
-  }, [currentLocation]);
-
-  useEffect(() => {
-    localStorage.setItem("type", type);
-  }, [type]);
 
   return (
     <div className="products-container">

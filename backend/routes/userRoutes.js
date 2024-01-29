@@ -1,7 +1,11 @@
 import express from "express";
 
 import {
+  clearBasket,
   currentUser,
+  decrementBasket,
+  incrementBasket,
+  removeFromBasket,
   userChangeEmail,
   userChangePassword,
   userChangeUsername,
@@ -14,6 +18,14 @@ const router = express.Router();
 router.post("/signup", userSignup);
 
 router.post("/login", userLogin);
+
+router.patch("/addToBasket", incrementBasket);
+
+router.patch("/clearBasket", clearBasket);
+
+router.patch("/deleteFromBasket", decrementBasket);
+
+router.patch("/removeFromBasket", removeFromBasket);
 
 router.patch("/changeUsername", userChangeUsername);
 

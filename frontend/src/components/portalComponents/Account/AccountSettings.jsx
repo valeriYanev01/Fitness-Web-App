@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import "./AccountSettings.css";
-import { Link } from "react-router-dom";
 import { WorkoutContext } from "../../../context/MyPortal Page/WorkoutContext";
 import { SettingsContext } from "../../../context/MyPortal Page/SettingsContext";
 import { AccountSettingsContext } from "../../../context/MyPortal Page/AccountSettingsContext";

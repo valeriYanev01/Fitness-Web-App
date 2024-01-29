@@ -17,8 +17,9 @@ import Account from "./pages/Account";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Store from "./pages/Store";
-import SingleProduct from "./pages/SingleProduct";
+import SingleProduct from "./components/storeComponents/SingleProduct";
 import { LoginContext } from "./context/LoginContext";
+import Checkout from "./components/storeComponents/Checkout";
 
 function App() {
   const { loggedIn } = useContext(LoginContext);
@@ -29,13 +30,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="store" element={<Store />}>
-          {["protein", "creatine", "bcaa", "carbohydrate", "vitamins", "minerals"].map((path, index) => (
-            <Route key={index} path={path} element={<Products />} />
-          ))}
-
-          {["protein", "creatine", "bcaa", "carbohydrate", "vitamins", "minerals"].map((path, index) => (
-            <Route key={index} path={`${path}/:id`} element={<SingleProduct />} />
-          ))}
+          <Route path="/store/protein" element={<Products />} />
+          <Route path="/store/protein/:id" element={<SingleProduct />} />
+          <Route path="creatine" element={<Products />} />
+          <Route path="/store/creatine/:id" element={<SingleProduct />} />
+          <Route path="bcaa" element={<Products />} />
+          <Route path="/store/bcaa/:id" element={<SingleProduct />} />
+          <Route path="carbohydrate" element={<Products />} />
+          <Route path="/store/carbohydrate/:id" element={<SingleProduct />} />
+          <Route path="vitamins" element={<Products />} />
+          <Route path="/store/vitamins/:id" element={<SingleProduct />} />
+          <Route path="minerals" element={<Products />} />
+          <Route path="/store/minerals/:id" element={<SingleProduct />} />
         </Route>
         <Route path="myportal" element={<MyPortal />}>
           <Route path="workouts" element={<WorkoutsFetch />} />
@@ -50,6 +56,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
         </Route>
+        <Route path="checkout" element={<Checkout />} />
       </Routes>
       <AuthVerify />
 

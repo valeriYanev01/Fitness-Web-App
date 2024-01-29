@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SidePanel.css";
-import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
+import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
+import Basket from "./Basket";
 
 const SidePanel = () => {
   const { setType, type } = useContext(ProductTypeContext);
@@ -64,6 +65,7 @@ const SidePanel = () => {
       >
         Minerals
       </span>
+      <Basket />
     </div>
   );
 };

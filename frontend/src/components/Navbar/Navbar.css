@@ -91,6 +91,10 @@ footer {
   background: #212529;
 }
 
+.navigation-menu-link {
+  padding: 10px;
+}
+
 .navigation-user:hover .navigation-menu {
   display: block;
 }

@@ -1,6 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
+
+const productSchema = new Schema({
+  name: String,
+});
 
 const userSchema = new mongoose.Schema(
   {
@@ -17,6 +21,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "User",
     },
+    basket: [productSchema],
   },
   { timestamps: true }
 );

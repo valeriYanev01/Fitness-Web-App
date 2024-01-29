@@ -4,7 +4,7 @@ import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
 import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { PortalContext } from "../../context/MyPortal Page/PortalContext";
 import { LocationContext } from "../../context/MyPortal Page/LocationContext";
-import ProductTypeContext from "../../context/Store Page/ProductTypeContext";
+import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import { AccountSettingsContext } from "../../context/MyPortal Page/AccountSettingsContext";
 
 const Links = () => {
@@ -45,6 +45,7 @@ const Links = () => {
           onClick={() => {
             handleNullify();
             setCurrentLocation("/store");
+            setType("");
           }}
           to="store"
         >

@@ -6,6 +6,9 @@ footer {
   gap: 100px;
   justify-content: start;
   background: #212529;
+  z-index: 20;
+  position: relative;
+  bottom: 0;
 }
 
 .disclaimer {

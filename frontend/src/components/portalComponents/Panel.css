@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.myportal-dashboard a {
+  color: #212529;
+}
+
 .myportal-dashboard-links {
   list-style: none;
   margin-top: 20px;

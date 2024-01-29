@@ -28,7 +28,10 @@ const Navbar = () => {
               <>
                 <span className="navigation-greet">{username}</span>
                 <div className="navigation-menu">
-                  <div className="logout-button" onClick={logout}>
+                  <Link className="navigation-menu-link" to="checkout">
+                    Basket
+                  </Link>
+                  <div className="navigation-menu-link" onClick={logout}>
                     Logout
                   </div>
                 </div>

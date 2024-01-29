@@ -4,7 +4,6 @@ export const allProducts = async (req, res) => {
   const { type } = req.query;
 
   try {
-    console.log(type);
     const getProducts = await productsModel.find({ type: type });
 
     res.status(200).json({ getProducts });

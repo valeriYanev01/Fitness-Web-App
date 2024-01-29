@@ -37,6 +37,72 @@ export const userLogin = async (req, res) => {
   }
 };
 
+export const incrementBasket = async (req, res) => {
+  const { _id } = req.query;
+  const { newBasket } = req.body;
+  try {
+    const updatedInfo = await userModel.findOneAndUpdate(
+      { _id: _id },
+      { $push: { basket: { $each: newBasket } } },
+      { new: true }
+    );
+    return res.status(200).json({ updatedInfo });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+export const clearBasket = async (req, res) => {
+  const { _id } = req.body.params;
+
+  try {
+    const updatedInfo = await userModel.findOneAndUpdate({ _id: _id }, { $set: { basket: [] } }, { new: true });
+    return res.status(200).json({ updatedInfo });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+export const removeFromBasket = async (req, res) => {
+  const { _id } = req.query;
+  const { removedItem } = req.body;
+  try {
+    const user = await userModel.findOne({ _id: _id });
+
+    user.basket = user.basket.filter((item) => item.name !== removedItem.name);
+
+    await user.save();
+
+    return res.status(200).json({ user });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+export const decrementBasket = async (req, res) => {
+  const { _id } = req.query;
+  const { removedItem } = req.body;
+
+  const itemToRemove = removedItem.productId;
+  try {
+    const user = await userModel.findById(_id);
+
+    const indexToRemove = user.basket.findIndex((item) => item.name == itemToRemove);
+
+    if (indexToRemove !== -1) {
+      user.basket.splice(indexToRemove, 1);
+
+      const updatedInfo = await user.save();
+
+      return res.status(200).json({ updatedInfo });
+    } else {
+      return res.status(404).json({ error: "Item not found in basket" });
+    }
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
 export const userChangeUsername = async (req, res) => {
   const { username } = req.body;
   const { _id } = req.query;

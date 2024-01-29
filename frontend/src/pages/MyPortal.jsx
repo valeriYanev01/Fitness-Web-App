@@ -121,7 +121,7 @@ const MyPortal = () => {
             setConfirmNewPassword={setConfirmNewPassword}
           />
         )}
-        {!showCalendar && !showCalculator && !showAccountSettings && <div>Select a feature from the menu</div>}
+        {!showCalendar && !showCalculator && !showAccountSettings && user && <div>Select a feature from the menu</div>}
 
         <h2 className="myportal-outletName">{outletName}</h2>
         <Link to="/myportal">
