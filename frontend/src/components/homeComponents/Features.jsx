@@ -1,6 +1,6 @@
 import React from "react";
-import "./Features.css";
 import { Link } from "react-router-dom";
+import "./Features.css";
 
 const Features = ({ image, content }) => {
   return (

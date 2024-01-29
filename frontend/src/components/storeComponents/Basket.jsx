@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import "./Basket.css";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import { Link } from "react-router-dom";
+import "./Basket.css";
 
 const Basket = () => {
   const { basketItems } = useContext(ProductTypeContext);

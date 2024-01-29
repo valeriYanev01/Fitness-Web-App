@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import "./Footer.css";
 import Links from "./Navbar/Links";
 import Modal from "./Modal";
+import "./Footer.css";
 
 const Footer = () => {
   const [openModal, setOpenModal] = useState(false);

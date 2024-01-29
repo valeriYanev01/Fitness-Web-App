@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import "./AccountSettings.css";
 import { WorkoutContext } from "../../../context/MyPortal Page/WorkoutContext";
 import { SettingsContext } from "../../../context/MyPortal Page/SettingsContext";
 import { AccountSettingsContext } from "../../../context/MyPortal Page/AccountSettingsContext";
 import { LocationContext } from "../../../context/MyPortal Page/LocationContext";
+import "./AccountSettings.css";
 
 const AccountSettings = ({
   setUsername,

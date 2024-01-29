@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SidePanel.css";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import Basket from "./Basket";
+import "./SidePanel.css";
 
 const SidePanel = () => {
   const { setType, type } = useContext(ProductTypeContext);

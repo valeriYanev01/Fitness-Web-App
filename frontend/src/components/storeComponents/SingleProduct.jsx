@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import "./SingleProduct.css";
 import Loading from "../Loading";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import { useLocation } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContext";
+import "./SingleProduct.css";
 
 const SingleProduct = () => {
   const [productData, setProductData] = useState(null);

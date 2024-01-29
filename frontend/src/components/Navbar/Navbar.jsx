@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./Navbar.css";
 import Logo from "../Logo";
 import Links from "./Links";
+import "./Navbar.css";
 
 import useUser from "../../hooks/useUser";
 import useLogout from "../../hooks/useLogout";

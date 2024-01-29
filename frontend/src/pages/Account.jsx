@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import "./Account.css";
 import Login from "./Login";
 import Signup from "./Signup";
 import { LoginContext } from "../context/LoginContext";
+import "./Account.css";
 
 const Account = () => {
   const [sign, setSign] = useState(false);

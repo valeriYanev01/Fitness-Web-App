@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import "./Checkout.css";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
+import "./Checkout.css";
 
 const Checkout = () => {
   const [uniqueProducts, setUniqueProducts] = useState([]);

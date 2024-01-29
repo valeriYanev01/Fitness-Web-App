@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import "./BMIResult.css";
 import { CalculatorContext } from "../../context/MyPortal Page/CalculatorContext";
+import "./BMIResult.css";
 
 const BMIResult = ({ result }) => {
   const { bmiResultVisibility } = useContext(CalculatorContext);

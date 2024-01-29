@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
@@ -20,6 +19,8 @@ import Store from "./pages/Store";
 import SingleProduct from "./components/storeComponents/SingleProduct";
 import { LoginContext } from "./context/LoginContext";
 import Checkout from "./components/storeComponents/Checkout";
+
+import "./App.css";
 
 function App() {
   const { loggedIn } = useContext(LoginContext);

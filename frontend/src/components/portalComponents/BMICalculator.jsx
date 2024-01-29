@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import "./BMICalculator.css";
 import { CalculatorContext } from "../../context/MyPortal Page/CalculatorContext";
+import "./BMICalculator.css";
 
 const BMICalculator = ({ usUnits, setUsUnits, metricUnits, setMetricUnits }) => {
   const [age, setAge] = useState("25");

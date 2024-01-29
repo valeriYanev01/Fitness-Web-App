@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
 import Price from "../components/homeComponents/Price";
 import Features from "../components/homeComponents/Features";
+import "./Home.css";
 
 const Home = () => {
   const [isHidden, setIsHidden] = useState(true);

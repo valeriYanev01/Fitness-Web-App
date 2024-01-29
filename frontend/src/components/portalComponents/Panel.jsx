@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 import useLogout from "../../hooks/useLogout";
-import "./Panel.css";
 import { LoginContext } from "../../context/LoginContext";
 import { PortalContext } from "../../context/MyPortal Page/PortalContext";
 import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
 import { LocationContext } from "../../context/MyPortal Page/LocationContext";
 import { AccountSettingsContext } from "../../context/MyPortal Page/AccountSettingsContext";
+import "./Panel.css";
 
 const Panel = ({ showCalculator, setShowCalculator, setCloseBtnStyle }) => {
   const { loggedIn } = useContext(LoginContext);

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./MyPortal.css";
 import WorkoutCalendar from "../components/portalComponents/WorkoutCalendar";
 import CreateWorkout from "../components/portalComponents/CreateWorkout";
 import WorkoutsFetch from "../components/portalComponents/WorkoutsFetch";
@@ -16,6 +15,7 @@ import { CalculatorContext } from "../context/MyPortal Page/CalculatorContext";
 import { LocationContext } from "../context/MyPortal Page/LocationContext";
 import { AccountSettingsContext } from "../context/MyPortal Page/AccountSettingsContext";
 import { LoginContext } from "../context/LoginContext";
+import "./MyPortal.css";
 
 const MyPortal = () => {
   const [closeBtnStyle, setCloseBtnStyle] = useState("");

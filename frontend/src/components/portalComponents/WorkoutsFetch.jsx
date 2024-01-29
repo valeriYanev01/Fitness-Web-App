@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import "./WorkoutsFetch.css";
 import WorkoutList from "./WorkoutList";
 import { CalendarContext } from "../../context/MyPortal Page/CalendarContext";
 import { WorkoutContext } from "../../context/MyPortal Page/WorkoutContext";
 import { LoginContext } from "../../context/LoginContext";
+import "./WorkoutsFetch.css";
 
 const WorkoutsFetch = () => {
   const [workouts, setWorkouts] = useState([]);
