@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import SidePanel from "../components/storeComponents/SidePanel";
-import "./Store.css";
 import { Outlet } from "react-router-dom";
 import { ProductTypeContext } from "../context/Store Page/ProductTypeContext";
+import "./Store.css";
 
 const Store = () => {
   const { type } = useContext(ProductTypeContext);
