@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Price from "../components/homeComponents/Price";
 import Features from "../components/homeComponents/Features";
+import { ChangeBgContext } from "../context/ChangeBgContext";
 import "./Home.css";
 
 const Home = () => {
   const [isHidden, setIsHidden] = useState(true);
+
+  const { setSelectedItem } = useContext(ChangeBgContext);
 
   return (
     <>
@@ -22,9 +25,21 @@ const Home = () => {
             </h2>
 
             <div className="home-section-prices">
-              <Price cName={"silver"} name={"MindCraft Silver"} price={50} content={"Gym"} link={"/"} />
-              <Price cName={"gold"} name={"MindCraft Gold"} price={70} content={"Gym and Spa"} link={"/"} />
-              <Price cName={"platinum"} name={"MindCraft Platinum"} price={80} content={"All Activities"} link={"/"} />
+              <div onClick={() => setSelectedItem("silver")}>
+                <Price cName={"silver"} name={"MindCraft Silver"} price={50} content={"Gym"} link={"/about"} />
+              </div>
+              <div onClick={() => setSelectedItem("gold")}>
+                <Price cName={"gold"} name={"MindCraft Gold"} price={70} content={"Gym and Spa"} link={"/about"} />
+              </div>
+              <div onClick={() => setSelectedItem("platinum")}>
+                <Price
+                  cName={"platinum"}
+                  name={"MindCraft Platinum"}
+                  price={80}
+                  content={"All Activities"}
+                  link={"/about"}
+                />
+              </div>
             </div>
           </section>
         </header>
@@ -66,10 +81,18 @@ const Home = () => {
         <section className="home-about">
           <h2>Benefits and Features</h2>
           <div className="home-about-features-display">
-            <Features image={"Images/Home-Area.jpg"} content={"Fitness Area of 25,000 m²"} />
-            <Features image={"Images/Home-Trainers.jpg"} content={"Personal Trainers and Nutritionists"} />
-            <Features image={"Images/Home-Sauna.jpg"} content={"Spa and Relaxing Area"} />
-            <Features image={"Images/Home-Pool.jpg"} content={"Indoor Swimming Pool, 25m Length"} />
+            <div onClick={() => setSelectedItem("fitness")}>
+              <Features image={"Images/Home-Area.jpg"} content={"Fitness Area of 25,000 m²"} />
+            </div>
+            <div onClick={() => setSelectedItem("trainers")}>
+              <Features image={"Images/Home-Trainers.jpg"} content={"Personal Trainers and Nutritionists"} />
+            </div>
+            <div onClick={() => setSelectedItem("spa")}>
+              <Features image={"Images/Home-Sauna.jpg"} content={"Spa and Relaxing Area"} />
+            </div>
+            <div onClick={() => setSelectedItem("swimming")}>
+              <Features image={"Images/Home-Pool.jpg"} content={"Indoor Swimming Pool, 25m Length"} />
+            </div>
           </div>
         </section>
 

@@ -10,7 +10,7 @@ const Features = ({ image, content }) => {
         <p>{content}</p>
       </div>
       <div className="home-about-features-link">
-        <Link to="/">See More</Link>
+        <Link to="/about">See More</Link>
       </div>
     </div>
   );

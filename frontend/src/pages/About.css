@@ -1,0 +1,36 @@
+.about-container {
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.separator {
+  border-top: 2px solid #dee2e6;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.selected {
+  border: 2px solid #ffa726;
+}

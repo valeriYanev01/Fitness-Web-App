@@ -21,6 +21,7 @@ import { LoginContext } from "./context/LoginContext";
 import Checkout from "./components/storeComponents/Checkout";
 
 import "./App.css";
+import About from "./pages/About";
 
 function App() {
   const { loggedIn } = useContext(LoginContext);
@@ -30,6 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
         <Route path="store" element={<Store />}>
           <Route path="/store/protein" element={<Products />} />
           <Route path="/store/protein/:id" element={<SingleProduct />} />

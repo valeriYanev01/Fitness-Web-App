@@ -44,6 +44,17 @@ const Links = () => {
         <NavLink
           onClick={() => {
             handleNullify();
+            setCurrentLocation("/");
+          }}
+          to="/about"
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          onClick={() => {
+            handleNullify();
             setCurrentLocation("/store");
             setType("");
           }}

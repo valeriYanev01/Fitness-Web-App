@@ -11,6 +11,7 @@ import { CalculatorContextProvider } from "./context/./MyPortal Page/CalculatorC
 import { ProductTypeContextProvider } from "./context/Store Page/ProductTypeContext.jsx";
 import { AccountSettingsContextProvider } from "./context/MyPortal Page/AccountSettingsContext.jsx";
 import { SettingsContextProvider } from "./context/MyPortal Page/SettingsContext.jsx";
+import { ChangeBgContextProvider } from "./context/ChangeBgContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -24,7 +25,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   <LocationContextProvider>
                     <CalculatorContextProvider>
                       <ProductTypeContextProvider>
-                        <App />
+                        <ChangeBgContextProvider>
+                          <App />
+                        </ChangeBgContextProvider>
                       </ProductTypeContextProvider>
                     </CalculatorContextProvider>
                   </LocationContextProvider>
