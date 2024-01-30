@@ -40,7 +40,7 @@ const ChangeCredentials = ({
         setId(data.data.user._id);
       });
     }
-  });
+  }, [loggedIn]);
 
   const handleChangeUsername = () => {
     if (loggedIn) {
