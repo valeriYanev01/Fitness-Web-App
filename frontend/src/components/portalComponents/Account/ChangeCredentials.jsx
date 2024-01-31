@@ -5,7 +5,7 @@ import { SettingsContext } from "../../../context/MyPortal Page/SettingsContext"
 import { LoginContext } from "../../../context/LoginContext";
 import { AccountSettingsContext } from "../../../context/MyPortal Page/AccountSettingsContext";
 import useLogout from "../../../hooks/useLogout";
-import "./Changecredentials.css";
+import "./ChangeCredentials.css";
 
 const ChangeCredentials = ({
   username,
