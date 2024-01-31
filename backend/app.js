@@ -22,6 +22,11 @@ app.use("/api/workouts", workoutRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 
-mongoose.connect(URI).then(() => {
-  app.listen(PORT, () => console.log(`App is connected to DB running on port: ${PORT}`));
-});
+mongoose
+  .connect(URI)
+  .then(() => {
+    app.listen(PORT, () => console.log(`App is connected to DB running on port: ${PORT}`));
+  })
+  .catch((err) => {
+    console.log(err);
+  });

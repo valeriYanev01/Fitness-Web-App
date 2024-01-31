@@ -17,7 +17,7 @@ const useUser = () => {
           console.log(err);
         });
     }
-  }, [setUsername]);
+  });
 
   return username;
 };
