@@ -32,11 +32,13 @@ const ChangeCredentials = ({
 
   const navigate = useNavigate();
 
+  const URL = import.meta.env.VITE_URL;
+
   useEffect(() => {
     if (loggedIn) {
       const { email } = JSON.parse(localStorage.getItem("user"));
 
-      axios.get("http://localhost:6969/api/users/", { params: { email: email } }).then((data) => {
+      axios.get(`${URL}users/`, { params: { email: email } }).then((data) => {
         setId(data.data.user._id);
       });
     }
@@ -45,7 +47,7 @@ const ChangeCredentials = ({
   const handleChangeUsername = () => {
     if (loggedIn) {
       axios
-        .patch("http://localhost:6969/api/users/changeUsername", { username: username }, { params: { _id: id } })
+        .patch(`${URL}users/changeUsername`, { username: username }, { params: { _id: id } })
         .then(() => {
           setUsername("");
           navigate("/myportal/account");
@@ -59,7 +61,7 @@ const ChangeCredentials = ({
   const handleChangeEmail = () => {
     axios
       .patch(
-        "http://localhost:6969/api/users/changeEmail",
+        `${URL}users/changeEmail`,
         {
           oldEmail: oldEmail,
           newEmail: newEmail,
@@ -78,7 +80,7 @@ const ChangeCredentials = ({
   const handleChangePassword = () => {
     axios
       .patch(
-        "http://localhost:6969/api/users/changePassword",
+        `${URL}users/changePassword`,
         {
           oldPassword: oldPassword,
           newPassword: newPassword,

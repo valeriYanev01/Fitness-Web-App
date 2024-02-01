@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import "./Checkout.css";
+import { LoginContext } from "../../context/LoginContext";
 
 const Checkout = () => {
   const [uniqueProducts, setUniqueProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { basketItems, setBasketItems, finalPrice, setFinalPrice, id } = useContext(ProductTypeContext);
+  const { loggedIn } = useContext(LoginContext);
+
+  const URL = import.meta.env.VITE_URL;
 
   useEffect(() => {
     setLoading(true);
@@ -14,9 +18,7 @@ const Checkout = () => {
     const fetchProductDetails = async () => {
       try {
         const productIds = basketItems.map((item) => item.name);
-        const responses = await Promise.all(
-          productIds.map((productId) => axios.get(`http://localhost:6969/api/products/${productId}`))
-        );
+        const responses = await Promise.all(productIds.map((productId) => axios.get(`${URL}products/${productId}`)));
 
         const productDetails = responses.map((response) => response.data.product);
         setUniqueProducts(getUniqueProducts(productDetails));
@@ -63,7 +65,7 @@ const Checkout = () => {
   const handleIncrement = async (productId) => {
     try {
       const response = await axios.patch(
-        `http://localhost:6969/api/users/addToBasket`,
+        `${URL}users/addToBasket`,
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );
@@ -77,7 +79,7 @@ const Checkout = () => {
   const handleDecrement = async (productId) => {
     try {
       const response = await axios.patch(
-        `http://localhost:6969/api/users/deleteFromBasket`,
+        `${URL}users/deleteFromBasket`,
         { removedItem: { productId } },
         { params: { _id: id } }
       );
@@ -91,7 +93,7 @@ const Checkout = () => {
   const removeItemFromBasket = async (productId) => {
     try {
       const response = await axios.patch(
-        `http://localhost:6969/api/users/removeFromBasket`,
+        `${URL}users/removeFromBasket`,
         { removedItem: { name: productId } },
         { params: { _id: id } }
       );
@@ -107,7 +109,9 @@ const Checkout = () => {
       setBasketItems([]);
       setFinalPrice(0);
 
-      await axios.patch(`http://localhost:6969/api/users/clearBasket`, { params: { _id: id } });
+      await axios.patch(`${URL}users/clearBasket`, {
+        params: { _id: id },
+      });
 
       console.log("Products purchased successfully!");
     } catch (error) {
@@ -129,36 +133,42 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
-      <div className="checkout-container">
-        {uniqueProducts.map(({ product, count }) => (
-          <div key={`${product._id}-${count}`} className="checkout-products">
-            <div>
-              <img src={product.img} width="100px" alt={product.name} />
-            </div>
-            <div>
-              <div className="checkout-name">Product: {product.name}</div>
-              <div className="checkout-price">Price: {product.price}</div>
-              <div className="checkout-taste">Taste: {product.taste}</div>
-              <span className="checkout-quantity">Quantity: {count}</span>
-              <button className="checkout-increase" onClick={() => handleIncrement(product._id)}>
-                +
-              </button>{" "}
-              <button className="checkout-decrease" onClick={() => handleDecrement(product._id)}>
-                -
-              </button>
-            </div>
-            <span className="checkout-remove-item" onClick={() => removeItemFromBasket(product._id)}>
-              X
-            </span>
+      {!loggedIn ? (
+        <div>You need to log in to see this page</div>
+      ) : (
+        <>
+          <div className="checkout-container">
+            {uniqueProducts.map(({ product, count }) => (
+              <div key={`${product._id}-${count}`} className="checkout-products">
+                <div>
+                  <img src={product.img} width="100px" alt={product.name} />
+                </div>
+                <div>
+                  <div className="checkout-name">Product: {product.name}</div>
+                  <div className="checkout-price">Price: {product.price}</div>
+                  <div className="checkout-taste">Taste: {product.taste}</div>
+                  <span className="checkout-quantity">Quantity: {count}</span>
+                  <button className="checkout-increase" onClick={() => handleIncrement(product._id)}>
+                    +
+                  </button>{" "}
+                  <button className="checkout-decrease" onClick={() => handleDecrement(product._id)}>
+                    -
+                  </button>
+                </div>
+                <span className="checkout-remove-item" onClick={() => removeItemFromBasket(product._id)}>
+                  X
+                </span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div>
-        <div>Final Price: {finalPrice} EUR</div>
-        <div onClick={purchaseProducts} className="checkout-purchase">
-          Purchase Products
-        </div>
-      </div>
+          <div>
+            <div>Final Price: {finalPrice} EUR</div>
+            <div onClick={purchaseProducts} className="checkout-purchase">
+              Purchase Products
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

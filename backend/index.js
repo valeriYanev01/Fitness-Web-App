@@ -34,7 +34,7 @@ app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 
 mongoose
-  .connect(URI)
+  .connect(URI, { retryWrites: false })
   .then(() => {
     app.listen(PORT, () => console.log(`App is connected to DB running on port: ${PORT}`));
   })

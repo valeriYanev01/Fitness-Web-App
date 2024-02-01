@@ -12,10 +12,12 @@ const Login = () => {
 
   const { setLoggedIn } = useContext(LoginContext);
 
+  const URL = import.meta.env.VITE_URL;
+
   const login = () => {
     setLoginError(null);
     axios
-      .post("http://localhost:6969/api/users/login", { email, password })
+      .post(`${URL}users/login`, { email, password })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         navigate("/myportal");

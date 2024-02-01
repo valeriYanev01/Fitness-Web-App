@@ -12,10 +12,12 @@ const Products = () => {
 
   const { type } = useContext(ProductTypeContext);
 
+  const URL = import.meta.env.VITE_URL;
+
   useEffect(() => {
     setLoaded(false);
 
-    axios.get("http://localhost:6969/api/products", { params: { type: type } }).then((data) => {
+    axios.get(`${URL}products`, { params: { type: type } }).then((data) => {
       setProducts(data.data.getProducts);
       setLoaded(true);
       setLoadProducts(true);

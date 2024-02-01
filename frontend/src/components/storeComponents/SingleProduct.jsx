@@ -3,20 +3,20 @@ import axios from "axios";
 import Loading from "../Loading";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import { useLocation } from "react-router-dom";
-import { LoginContext } from "../../context/LoginContext";
 import "./SingleProduct.css";
 
 const SingleProduct = () => {
   const [productData, setProductData] = useState(null);
   const { type, id, setBasketItems } = useContext(ProductTypeContext);
-  const { loggedIn } = useContext(LoginContext);
   const { pathname } = useLocation();
   const productId = pathname.split("/")[3];
+
+  const URL = import.meta.env.VITE_URL;
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:6969/api/products/${productId}`);
+        const response = await axios.get(`${URL}products/${productId}`);
         setProductData(response.data.product);
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -29,7 +29,7 @@ const SingleProduct = () => {
   const addItemToBasket = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:6969/api/users/addToBasket`,
+        `${URL}users/addToBasket`,
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );

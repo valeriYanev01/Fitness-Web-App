@@ -13,10 +13,12 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const URL = import.meta.env.VITE_URL;
+
   const signup = () => {
     setSignupError(null);
     axios
-      .post("http://localhost:6969/api/users/signup", { email, password })
+      .post(`${URL}users/signup`, { email, password })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         setLoggedIn(true);

@@ -17,11 +17,13 @@ export const ProductTypeContextProvider = ({ children }) => {
   const [basketItems, setBasketItems] = useState([]);
   const { loggedIn } = useContext(LoginContext);
 
+  const URL = import.meta.env.VITE_URL;
+
   useEffect(() => {
     if (loggedIn) {
       const { email } = JSON.parse(localStorage.getItem("user"));
       axios
-        .get("http://localhost:6969/api/users/", { params: { email: email } })
+        .get(`${URL}users/`, { params: { email: email } })
         .then((response) => {
           setId(response.data.user._id);
           setBasketItems(response.data.user.basket);

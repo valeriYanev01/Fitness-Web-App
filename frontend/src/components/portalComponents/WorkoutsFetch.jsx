@@ -17,11 +17,13 @@ const WorkoutsFetch = () => {
   const { loading, setLoading } = useContext(WorkoutContext);
   const { user } = useContext(LoginContext);
 
+  const URL = import.meta.env.VITE_URL;
+
   useEffect(() => {
     if (user) {
       const fetchData = () =>
         axios
-          .get("http://localhost:6969/api/workouts", {
+          .get(`${URL}workouts`, {
             params: { date: workoutDate },
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -41,7 +43,9 @@ const WorkoutsFetch = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:6969/api/workouts/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
+      .delete(`${URL}workouts/${id}`, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      })
       .then(() => {
         setLoading(false);
       })
@@ -53,11 +57,7 @@ const WorkoutsFetch = () => {
 
   const handleUpdate = (id) => {
     axios
-      .put(
-        `http://localhost:6969/api/workouts/${id}`,
-        { title, load, reps },
-        { headers: { Authorization: `Bearer ${user.token}` } }
-      )
+      .put(`${URL}workouts/${id}`, { title, load, reps }, { headers: { Authorization: `Bearer ${user.token}` } })
       .then(() => {
         setLoading(false);
       })
