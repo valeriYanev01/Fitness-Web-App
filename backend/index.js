@@ -19,7 +19,7 @@ const app = express();
 const URI = process.env.URI;
 const PORT = process.env.PORT || 3000;
 
-const limiter = rateLimit({ windowMs: 1 * 60 * 1000, limit: 20 });
+const limiter = rateLimit({ windowMs: 1 * 60 * 1000, limit: 200 });
 
 app.use(express.json());
 app.use(cors());

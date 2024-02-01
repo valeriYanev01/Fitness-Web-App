@@ -50,9 +50,9 @@ function App() {
           <Route path="workouts" element={<WorkoutsFetch />} />
           <Route path="bmi-calculator" element={<BMICalculator />} />
           <Route path="account" element={<AccountSettings />}>
-            <Route path="change-email" element={<ChangeCredentials />} />
-            <Route path="change-username" element={<ChangeCredentials />} />
-            <Route path="change-password" element={<ChangeCredentials />} />
+            <Route path="change-email" element={loggedIn ? <Navigate to="/" /> : <ChangeCredentials />} />
+            <Route path="change-username" element={loggedIn ? <Navigate to="/" /> : <ChangeCredentials />} />
+            <Route path="change-password" element={loggedIn ? <Navigate to="/" /> : <ChangeCredentials />} />
           </Route>
         </Route>
         <Route path="account" element={loggedIn ? <Navigate to="/" /> : <Account />}>
