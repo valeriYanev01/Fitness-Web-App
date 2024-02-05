@@ -2,3 +2,12 @@
   width: 50px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .store-basket {
+    position: fixed;
+    right: 10px;
+    bottom: 100px;
+    z-index: 999;
+  }
+}

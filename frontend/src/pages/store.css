@@ -2,11 +2,25 @@
   display: flex;
   gap: 50px;
 }
- 
+
 .store-introduction {
   font-size: 20px;
   line-height: 35px;
   word-spacing: 5px;
   margin-top: 50px;
   width: 60vw;
+}
+
+@media screen and (max-width: 768px) {
+  .store-page {
+    display: block;
+  }
+
+  .store-introduction {
+    width: 100vw;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 20px;
+    margin-bottom: 200px;
+  }
 }

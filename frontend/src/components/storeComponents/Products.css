@@ -72,19 +72,31 @@
   margin-bottom: 10px;
 }
 
-.products-name {
-}
-
-.products-price {
-}
-
-.products-weight {
-}
-
 .products-taste {
   width: 160px;
 }
 
 .products-img {
   width: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .products {
+    grid-template-columns: auto auto;
+    padding-right: 0;
+    font-size: 14px
+  }
+  .products-heading {
+    border: none;
+  }
+  .products-img {
+    width: 80px;
+  }
+  .product-container {
+    border-left: none !important;
+    border-bottom: 1px solid #212529;
+  }
+  .product-container div {
+    flex-direction: column;
+  }
 }
