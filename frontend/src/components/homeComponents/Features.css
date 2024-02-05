@@ -58,3 +58,15 @@
     color: #f1f3f5;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .home-about-features-single {
+    width: 230px;
+    height: 230px;
+    margin: 20px 0;
+  }
+  .home-about-features-image {
+    width: 300px;
+    height: 260px;
+  }
+}

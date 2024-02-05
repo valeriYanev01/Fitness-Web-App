@@ -104,6 +104,15 @@ footer {
   display: block;
 }
 
+@media screen and (max-width: 1024px) {
+  .navigation {
+    gap: 60px;
+  }
+  .navigation-list {
+    margin-right: 30px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navigation {
     gap: 30px;
