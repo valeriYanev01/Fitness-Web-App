@@ -1,18 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import Links from "./Links";
 import "./Navbar.css";
-
 import useUser from "../../hooks/useUser";
 import useLogout from "../../hooks/useLogout";
 import { LoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const { loggedIn } = useContext(LoginContext);
 
   const username = useUser();
   const logout = useLogout();
+
+  const hideMenuItems = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div className="navigation-container">
@@ -20,9 +25,12 @@ const Navbar = () => {
         <Link to="/">
           <Logo />
         </Link>
+        <a className="icon">
+          <i className="fa fa-bars" onClick={hideMenuItems}></i>
+        </a>
 
-        <ul className="navigation-list">
-          <Links />
+        <ul className={`navigation-list ${showMenu ? "show" : ""}`}>
+          <Links onShowMenu={setShowMenu} />
           <li className="navigation-user">
             {loggedIn ? (
               <>
@@ -37,7 +45,14 @@ const Navbar = () => {
                 </div>
               </>
             ) : (
-              <NavLink to="account">Account</NavLink>
+              <NavLink
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+                to="account"
+              >
+                Account
+              </NavLink>
             )}
           </li>
         </ul>

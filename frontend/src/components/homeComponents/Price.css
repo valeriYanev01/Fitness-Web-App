@@ -59,3 +59,29 @@
 .home-section-prices-flex ul li {
   margin: 2px;
 }
+
+@media only screen and (max-width: 768px) {
+  .home-section-prices {
+    gap: 80px;
+    border: none;
+    flex-direction: column;
+    height: auto;
+    position: relative;
+    transform: translate(-50%, 0);
+  }
+
+  .home-section-prices div {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-section-prices-link {
+    bottom: auto;
+    transform: translate(0, 10%);
+  }
+
+  .home-section-prices-silver,
+  .home-section-prices-gold {
+    border: none;
+  }
+}

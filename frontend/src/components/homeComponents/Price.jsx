@@ -9,6 +9,11 @@ const Price = ({ cName, name, price, content, link }) => {
       <ul>
         <li>BGN {price}/month</li>
         <li>24/7 Access to {content}</li>
+        {/* <li>
+          <Link to={link} className="home-section-prices-link">
+            Check offer
+          </Link>
+        </li> */}
       </ul>
       <Link to={link} className="home-section-prices-link">
         Check offer

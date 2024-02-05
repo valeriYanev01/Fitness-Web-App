@@ -7,7 +7,7 @@ import { LocationContext } from "../../context/MyPortal Page/LocationContext";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import { AccountSettingsContext } from "../../context/MyPortal Page/AccountSettingsContext";
 
-const Links = () => {
+const Links = ({ onShowMenu }) => {
   const { setShowCalendar } = useContext(CalendarContext);
   const { setShowSettings } = useContext(WorkoutContext);
   const { setOutletName, setCloseBtnContent } = useContext(PortalContext);
@@ -34,6 +34,7 @@ const Links = () => {
           onClick={() => {
             handleNullify();
             setCurrentLocation("/");
+            onShowMenu(false);
           }}
           to="/"
         >
@@ -45,6 +46,7 @@ const Links = () => {
           onClick={() => {
             handleNullify();
             setCurrentLocation("/");
+            onShowMenu(false);
           }}
           to="/about"
         >
@@ -57,6 +59,7 @@ const Links = () => {
             handleNullify();
             setCurrentLocation("/store");
             setType("");
+            onShowMenu(false);
           }}
           to="store"
         >
@@ -68,6 +71,7 @@ const Links = () => {
           onClick={() => {
             handleNullify();
             setCurrentLocation("/myportal");
+            onShowMenu(false);
           }}
           to="myportal"
         >

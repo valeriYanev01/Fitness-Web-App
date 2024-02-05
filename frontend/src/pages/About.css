@@ -34,3 +34,34 @@
 .selected {
   border: 2px solid #ffa726;
 }
+
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 24px;
+  }
+  .about-container {
+    padding: 20px 20px 0 20px;
+  }
+  .about-prices-heading,
+  .about-features-heading {
+    font-size: 20px;
+  }
+  .about-prices-label,
+  .about-prices-value {
+    font-size: 16px;
+  }
+  .about-prices-container {
+    margin: 0;
+  }
+  .about-features-container {
+    margin: 0;
+    padding: 0;
+  }
+  .about-prices-subheading {
+    font-size: 18px;
+  }
+  .about-prices-description,
+  .about-feature-description {
+    font-size: 14px;
+  }
+}

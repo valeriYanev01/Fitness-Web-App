@@ -21,8 +21,13 @@ footer li a {
 }
 
 .navigation-list li a:visited,
-footer li a:visited {
+footer li a:visited,
+.icon {
   color: #f1f3f5;
+}
+
+.icon {
+  display: none;
 }
 
 .navigation-list li a.active,
@@ -97,4 +102,46 @@ footer {
 
 .navigation-user:hover .navigation-menu {
   display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    gap: 30px;
+    width: 100vw;
+    justify-content: initial;
+  }
+
+  .navigation-list.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    width: 100%;
+  }
+  .navigation-list.show li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #f2f2f2;
+  }
+
+  .navigation-logo {
+    font-size: 18px;
+  }
+
+  .navigation-list {
+    font-size: 26px;
+    margin: 0 20px 0 0;
+    gap: 0;
+  }
+  .navigation-list li a {
+    display: none;
+  }
+  .icon {
+    float: right;
+    display: block;
+  }
 }

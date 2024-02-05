@@ -29,3 +29,14 @@
 .visible {
   display: block;
 }
+
+@media only screen and (max-width: 768px) {
+  .scrollToTop {
+    width: 30px;
+    height: 30px;
+  }
+  .arrow {
+    width: 25px;
+    height: 25px;
+  }
+}

@@ -138,3 +138,30 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+@media only screen and (max-width: 768px) {
+  .header-img {
+    height: 30vh;
+  }
+  .home-section-motto {
+    transform: translate(0, -150%);
+  }
+  .home-section-motto-first {
+    font-size: 32px;
+  }
+  .home-section-motto-second {
+    font-size: 18px;
+  }
+  .home-page header {
+    padding: 0;
+  }
+
+  .home-introduction h1,
+  .home-about h2 {
+    font-size: 30px;
+  }
+
+  .home-introduction p {
+    font-size: 16px;
+  }
+}

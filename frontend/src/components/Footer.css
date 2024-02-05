@@ -75,3 +75,29 @@ footer .links {
   flex-wrap: wrap;
   align-content: center;
 }
+
+@media only screen and (max-width: 768px) {
+  footer {
+    gap: 5px;
+    width: 100svw;
+  }
+  .disclaimer {
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+    font-size: 12px;
+  }
+  .contacts {
+    border: none;
+    padding: 0;
+  }
+  .contacts p {
+    font-size: 12px;
+  }
+  .contacts a img {
+    width: 30px;
+  }
+  .links {
+    display: none !important;
+  }
+}
