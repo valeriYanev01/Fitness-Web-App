@@ -6,7 +6,6 @@ import { ChangeBgContext } from "../context/ChangeBgContext";
 
 const About = () => {
   const { selectedItem } = useContext(ChangeBgContext);
-  console.log(selectedItem);
 
   return (
     <div className="about-container">

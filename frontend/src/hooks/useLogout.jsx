@@ -10,7 +10,7 @@ const useLogout = () => {
   const logout = () => {
     setLoggedIn(false);
     localStorage.removeItem("user");
-    navigate("/myportal");
+    navigate("/");
   };
 
   return logout;

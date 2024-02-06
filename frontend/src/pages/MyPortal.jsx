@@ -29,6 +29,7 @@ const MyPortal = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [clearLocalStorage, setClearLocalStorage] = useState(false);
 
   const { outletName, setOutletName, closeBtnContent, setCloseBtnContent } = useContext(PortalContext);
   const { showSettings, setShowSettings } = useContext(WorkoutContext);
@@ -98,76 +99,83 @@ const MyPortal = () => {
         showCalculator={showCalculator}
         setShowCalculator={setShowCalculator}
         setCloseBtnStyle={setCloseBtnStyle}
+        setClearLocalStorage={setClearLocalStorage}
       />
 
-      <div className="outlet">
-        {showCalendar && <WorkoutCalendar />}
-        {showCalculator && (
-          <BMICalculator
-            usUnits={usUnits}
-            setUsUnits={setUsUnits}
-            metricUnits={metricUnits}
-            setMetricUnits={setMetricUnits}
-          />
-        )}
-        {showAccountSettings && (
-          <AccountSettings
-            setUsername={setUsername}
-            setOldEmail={setOldEmail}
-            setNewEmail={setNewEmail}
-            setConfirmNewEmail={setConfirmNewEmail}
-            setOldPassword={setOldPassword}
-            setNewPassword={setNewPassword}
-            setConfirmNewPassword={setConfirmNewPassword}
-          />
-        )}
-        {!showCalendar && !showCalculator && !showAccountSettings && user && <div>Select a feature from the menu</div>}
+      {!clearLocalStorage && (
+        <>
+          <div className="outlet">
+            {showCalendar && <WorkoutCalendar />}
+            {showCalculator && (
+              <BMICalculator
+                usUnits={usUnits}
+                setUsUnits={setUsUnits}
+                metricUnits={metricUnits}
+                setMetricUnits={setMetricUnits}
+              />
+            )}
+            {showAccountSettings && (
+              <AccountSettings
+                setUsername={setUsername}
+                setOldEmail={setOldEmail}
+                setNewEmail={setNewEmail}
+                setConfirmNewEmail={setConfirmNewEmail}
+                setOldPassword={setOldPassword}
+                setNewPassword={setNewPassword}
+                setConfirmNewPassword={setConfirmNewPassword}
+              />
+            )}
+            {!showCalendar && !showCalculator && !showAccountSettings && user && (
+              <div>Select a feature from the menu</div>
+            )}
 
-        <h2 className="myportal-outletName">{outletName}</h2>
-        <Link to="/myportal">
-          <span
-            className={`${closeBtnStyle} myportal-closeBtn`}
-            onClick={() => {
-              setCloseBtnStyle("hideBtn");
-              setOutletName(null);
-              setCloseBtnContent(null);
-              setShowSettings(null);
-              setShowCalendar(false);
-              setShowCalculator(false);
-              setShowAccountSettings(false);
-            }}
-          >
-            {closeBtnContent}
-          </span>
-        </Link>
-      </div>
+            <h2 className="myportal-outletName">{outletName}</h2>
+            <Link to="/myportal">
+              <span
+                className={`${closeBtnStyle} myportal-closeBtn`}
+                onClick={() => {
+                  setCloseBtnStyle("hideBtn");
+                  setOutletName(null);
+                  setCloseBtnContent(null);
+                  setShowSettings(null);
+                  setShowCalendar(false);
+                  setShowCalculator(false);
+                  setShowAccountSettings(false);
+                }}
+              >
+                {closeBtnContent}
+              </span>
+            </Link>
+          </div>
 
-      <div className="myportal-settings">
-        {showSettings === "Create Workout" ? (
-          <CreateWorkout />
-        ) : showSettings === "Show Workout" ? (
-          <WorkoutsFetch />
-        ) : showSettings === "Show Calculator" ? (
-          <BMIResult result={result} />
-        ) : showSettings === "Change Credentials" ? (
-          <ChangeCredentials
-            setUsername={setUsername}
-            username={username}
-            setOldEmail={setOldEmail}
-            oldEmail={oldEmail}
-            setNewEmail={setNewEmail}
-            newEmail={newEmail}
-            setConfirmNewEmail={setConfirmNewEmail}
-            confirmNewEmail={confirmNewEmail}
-            setOldPassword={setOldPassword}
-            oldPassword={oldPassword}
-            setNewPassword={setNewPassword}
-            newPassword={newPassword}
-            setConfirmNewPassword={setConfirmNewPassword}
-            confirmNewPassword={confirmNewPassword}
-          />
-        ) : null}
-      </div>
+          <div className="myportal-settings">
+            {showSettings === "Create Workout" ? (
+              <CreateWorkout />
+            ) : showSettings === "Show Workout" ? (
+              <WorkoutsFetch />
+            ) : showSettings === "Show Calculator" ? (
+              <BMIResult result={result} />
+            ) : showSettings === "Change Credentials" ? (
+              <ChangeCredentials
+                setUsername={setUsername}
+                username={username}
+                setOldEmail={setOldEmail}
+                oldEmail={oldEmail}
+                setNewEmail={setNewEmail}
+                newEmail={newEmail}
+                setConfirmNewEmail={setConfirmNewEmail}
+                confirmNewEmail={confirmNewEmail}
+                setOldPassword={setOldPassword}
+                oldPassword={oldPassword}
+                setNewPassword={setNewPassword}
+                newPassword={newPassword}
+                setConfirmNewPassword={setConfirmNewPassword}
+                confirmNewPassword={confirmNewPassword}
+              />
+            ) : null}
+          </div>
+        </>
+      )}
     </div>
   );
 };
