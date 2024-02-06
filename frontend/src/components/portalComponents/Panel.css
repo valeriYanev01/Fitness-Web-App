@@ -11,6 +11,11 @@
   color: #212529;
 }
 
+.myportal-dashboard-links-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .myportal-dashboard-links {
   list-style: none;
   margin-top: 20px;
@@ -40,9 +45,18 @@
   -webkit-transform: rotate(-45deg);
 }
 
+.myportal-account-settings-container {
+  height: 70px;
+}
+
 .myportal-account-settings {
   color: #212529;
   position: absolute;
+  bottom: 50px;
+  list-style: none;
+}
+
+.second-link {
   bottom: 20px;
 }
 
@@ -55,4 +69,10 @@
   cursor: pointer;
   margin-top: 20px;
   padding: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .myportal-dashboard {
+    width: 100svw;
+  }
 }

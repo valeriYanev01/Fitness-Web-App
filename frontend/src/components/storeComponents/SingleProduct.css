@@ -58,3 +58,19 @@
     color: #f1f3f5;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .single-product-container {
+    flex-direction: column;
+    padding: 25px 0;
+  }
+  .store-single-product {
+    justify-content: center;
+  }
+  .single-product-img {
+    width: 250px;
+  }
+  .single-product-img:hover {
+    transform: scale(1.1);
+  }
+}

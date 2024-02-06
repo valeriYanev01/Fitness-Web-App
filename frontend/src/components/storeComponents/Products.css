@@ -84,7 +84,8 @@
   .products {
     grid-template-columns: auto auto;
     padding-right: 0;
-    font-size: 14px
+    font-size: 14px;
+    padding: 0 5px;
   }
   .products-heading {
     border: none;
@@ -97,6 +98,6 @@
     border-bottom: 1px solid #212529;
   }
   .product-container div {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }

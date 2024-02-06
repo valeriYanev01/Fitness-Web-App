@@ -85,3 +85,9 @@
 .workout-buttons-update {
   margin-left: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .workouts-fetch {
+    width: auto;
+  }
+}

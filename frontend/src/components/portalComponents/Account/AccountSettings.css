@@ -31,3 +31,9 @@
   margin-left: 10px;
   transition: margin 0.2s;
 }
+
+@media screen and (max-width: 768px) {
+  .myportal-changecredentials-description {
+    font-size: 16px;
+  }
+}

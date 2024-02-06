@@ -115,3 +115,16 @@
 .account-page-login-create-account:hover::after {
   transform: scaleX(1);
 }
+
+@media screen and (max-width: 768px) {
+  .account-page-container {
+    width: 100svw;
+  }
+  .login-email-container label,
+  .login-password-container label,
+  .signup-email-container label,
+  .signup-password-container label,
+  .signup-confirm-password-container label {
+    font-size: 16px;
+  }
+}

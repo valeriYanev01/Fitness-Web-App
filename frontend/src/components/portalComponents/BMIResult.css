@@ -34,3 +34,9 @@ tr:first-child {
 th {
   padding: 5px;
 }
+
+@media screen and (max-width: 768px) {
+  .calculator-bmi-container {
+    width: auto;
+  }
+}
