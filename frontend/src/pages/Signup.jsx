@@ -7,6 +7,7 @@ import "./Signup.css";
 const Signup = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [signupError, setSignupError] = useState(null);
 
   const { setLoggedIn } = useContext(LoginContext);
@@ -18,7 +19,7 @@ const Signup = () => {
   const signup = () => {
     setSignupError(null);
     axios
-      .post(`${URL}users/signup`, { email, password })
+      .post(`${URL}users/signup`, { email, password, confirmPassword })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         setLoggedIn(true);
@@ -52,7 +53,7 @@ const Signup = () => {
         <br />
         <div className="signup-confirm-password-container">
           <label>Confirm Password:</label>
-          <input type="password" />
+          <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" />
         </div>
         <p className="signup-error">{signupError}</p>
         <span className="signup-button" onClick={signup}>

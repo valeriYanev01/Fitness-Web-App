@@ -12,10 +12,12 @@ const createToken = (_id) => {
 };
 
 export const userSignup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, confirmPassword } = req.body;
+
+  console.log(password, confirmPassword);
 
   try {
-    const user = await userModel.signup(email, password);
+    const user = await userModel.signup(email, password, confirmPassword);
     const token = createToken(user._id);
 
     res.status(200).json({ email, token });

@@ -26,17 +26,37 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.statics.signup = async function (email, password) {
-  if (!email || !password) {
-    throw Error("All fields required!");
+userSchema.statics.signup = async function (email, password, confirmPassword) {
+  if (!email) {
+    throw Error("Email is required!");
+  }
+
+  if (!password) {
+    throw Error("Password is required!");
+  }
+
+  if (!confirmPassword) {
+    throw Error("Password confirm is required!");
   }
 
   if (!validator.isEmail(email)) {
     throw Error("Invalid email!");
   }
 
-  if (!validator.isStrongPassword(password)) {
-    throw Error("Password not strong enough!");
+  if (password !== confirmPassword) {
+    throw Error("Passwords do not match!");
+  }
+
+  if (
+    !validator.isStrongPassword(password, {
+      minLength: 8,
+      minLowercase: 4,
+      minNumbers: 1,
+      minSymbols: 0,
+      minUppercase: 0,
+    })
+  ) {
+    throw Error("Password needs to be at least 8 characters with at least 1 number.");
   }
 
   const userExists = await this.findOne({ email });
