@@ -6,5 +6,4 @@ export default defineConfig({
   css: {
     modules: true,
   },
-  base: "/Mindcraft-Fitness/",
 });

@@ -3,6 +3,7 @@ import axios from "axios";
 import { ProductTypeContext } from "../../context/Store Page/ProductTypeContext";
 import "./Checkout.css";
 import { LoginContext } from "../../context/LoginContext";
+import CheckoutSingleProduct from "./CheckoutSingleProduct";
 
 const Checkout = () => {
   const [uniqueProducts, setUniqueProducts] = useState([]);
@@ -119,9 +120,9 @@ const Checkout = () => {
     }
   };
 
-  if (loading) {
-    return <div>Loading Basket</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading Basket</div>;
+  // }
 
   if (!basketItems) {
     return (
@@ -139,26 +140,15 @@ const Checkout = () => {
         <>
           <div className="checkout-container">
             {uniqueProducts.map(({ product, count }) => (
-              <div key={`${product._id}-${count}`} className="checkout-products">
-                <div>
-                  <img src={product.img} width="100px" alt={product.name} />
-                </div>
-                <div>
-                  <div className="checkout-name">Product: {product.name}</div>
-                  <div className="checkout-price">Price: {product.price}</div>
-                  <div className="checkout-taste">Taste: {product.taste}</div>
-                  <span className="checkout-quantity">Quantity: {count}</span>
-                  <button className="checkout-increase" onClick={() => handleIncrement(product._id)}>
-                    +
-                  </button>{" "}
-                  <button className="checkout-decrease" onClick={() => handleDecrement(product._id)}>
-                    -
-                  </button>
-                </div>
-                <span className="checkout-remove-item" onClick={() => removeItemFromBasket(product._id)}>
-                  X
-                </span>
-              </div>
+              <CheckoutSingleProduct
+                key={`${product._id}-${count}`}
+                product={product}
+                count={count}
+                handleDecrement={handleDecrement}
+                handleIncrement={handleIncrement}
+                removeItemFromBasket={removeItemFromBasket}
+                loading={loading}
+              />
             ))}
           </div>
           <div>
