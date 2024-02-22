@@ -70,6 +70,7 @@ const Checkout = () => {
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );
+      console.log(response);
       const updatedBasket = response.data.updatedInfo.basket;
       setBasketItems(updatedBasket);
     } catch (error) {
@@ -119,10 +120,6 @@ const Checkout = () => {
       console.error("Error purchasing products:", error);
     }
   };
-
-  // if (loading) {
-  //   return <div>Loading Basket</div>;
-  // }
 
   if (!basketItems) {
     return (
