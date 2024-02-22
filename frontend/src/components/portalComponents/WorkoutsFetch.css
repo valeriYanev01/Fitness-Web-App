@@ -1,0 +1,93 @@
+.workouts-fetch {
+  margin: 50px 20px;
+  width: 23vw;
+  overflow: auto;
+}
+
+.workouts-fetch-list {
+  list-style: none;
+  padding: 0 30px 10px 0;
+}
+
+.workouts-single-workout:not(:first-child) {
+  border-top: 2px solid #212529;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.workouts-fetch-loading {
+  margin: 50px 20px;
+}
+
+.workouts-single-workout {
+  position: relative;
+}
+
+.single-workout-value {
+  position: absolute;
+  left: 100px;
+}
+
+.workouts-single-workout input {
+  border-radius: 3px;
+  border-color: #212529;
+  color: #212529;
+  height: 20px;
+  padding: 5px;
+  margin-left: 5px;
+  position: absolute;
+  left: 100px;
+}
+
+.single-workout-title,
+.single-workout-reps,
+.single-workout-load {
+  height: 25px;
+}
+
+.single-workout-buttons {
+  margin-bottom: 10px;
+  padding: 10px 0 0 0;
+}
+
+.workout-buttons-delete,
+.workout-buttons-discard,
+.workout-buttons-edit,
+.workout-buttons-update {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background: #ffb951;
+  font-weight: 700;
+}
+
+.workout-buttons-delete:hover,
+.workout-buttons-discard:hover,
+.workout-buttons-edit:hover,
+.workout-buttons-update:hover {
+  animation: changeWorkoutButton 0.2s forwards;
+}
+
+@keyframes changeWorkoutButton {
+  from {
+    background: #ffb951;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}
+
+.workout-buttons-discard,
+.workout-buttons-edit,
+.workout-buttons-update {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .workouts-fetch {
+    width: auto;
+  }
+}

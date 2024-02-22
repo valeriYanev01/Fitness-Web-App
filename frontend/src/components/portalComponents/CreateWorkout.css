@@ -1,0 +1,51 @@
+.create-workout {
+  margin: 50px 20px;
+  width: 23vw;
+}
+
+.create-workout-info {
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.create-workout-info input {
+  border-radius: 3px;
+  border-color: #212529;
+  color: #212529;
+  height: 20px;
+  padding: 5px;
+  margin-left: 5px;
+  position: absolute;
+  left: 100px;
+}
+
+.create-workout-info-title,
+.create-workout-info-load,
+.create-workout-info-reps {
+  height: 25px;
+}
+
+.create-workout-button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background: #ffb951;
+  font-weight: 700;
+  margin: 100px 0 0 0;
+}
+
+.create-workout-button:hover {
+  animation: changeCreateWorkoutButton 0.2s forwards;
+}
+
+@keyframes changeCreateWorkoutButton {
+  from {
+    background: #ffb951;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}

@@ -1,0 +1,130 @@
+.account-page {
+  overflow: hidden;
+}
+
+.account-page-bg {
+  position: relative;
+  width: 98.9vw;
+  height: 90.5vh;
+  filter: blur(3px);
+  transform: scale(1.1);
+}
+
+.account-page-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  color: #f1f3f5;
+  border: 1px solid #f1f3f5;
+}
+
+.create-login-account {
+  position: absolute;
+  bottom: 10px;
+}
+
+.signup,
+.login {
+  font-size: 20px;
+}
+
+.signup-heading,
+.login-heading {
+  font-size: 42px;
+  text-align: center;
+}
+
+.signup-email-container,
+.login-email-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup-confirm-password-container,
+.login-password-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.signup-email-container,
+.signup-password-container,
+.signup-confirm-password-container,
+.login-email-container,
+.login-password-container {
+  border-left: 5px solid #ffb951;
+  padding-left: 10px;
+}
+
+.signup-button,
+.login-button {
+  border: 2px solid #f1f3f5;
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.signup-button:hover,
+.login-button:hover {
+  animation: changeAccountButtonColor 0.2s forwards;
+}
+
+@keyframes changeAccountButtonColor {
+  from {
+    background: #212529;
+    color: #f1f3f5;
+  }
+  to {
+    background: #ffb951;
+    color: #212529;
+  }
+}
+
+.account-page-login-create-account {
+  position: absolute;
+  bottom: 10px;
+  color: #f1f3f5;
+}
+
+.account-page-login-create-account:visited {
+  color: #f1f3f5;
+}
+
+.account-page-login-create-account::after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px #ffa726;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+}
+
+.account-page-login-create-account::after {
+  transition: transform 250ms ease-in-out;
+}
+
+.account-page-login-create-account:hover::after {
+  transform: scaleX(1);
+}
+
+@media screen and (max-width: 768px) {
+  .account-page-container {
+    width: 100svw;
+  }
+  .login-email-container label,
+  .login-password-container label,
+  .signup-email-container label,
+  .signup-password-container label,
+  .signup-confirm-password-container label {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,167 @@
+.home-page {
+  background: #212529;
+}
+
+.header-img {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  opacity: 0.5;
+}
+
+.home-page header {
+  padding-bottom: 100px;
+}
+
+.home-section-motto,
+.home-section-motto-first,
+.home-section-motto-second {
+  background: none;
+}
+
+.home-section-motto {
+  position: absolute;
+  transform: translate(0, -280%);
+  text-align: center;
+  width: 100%;
+  cursor: default;
+}
+
+.home-section-motto-first {
+  font-size: 60px;
+  color: #f1f3f5;
+}
+
+.home-section-motto-second {
+  color: #ffb951;
+  font-size: 25px;
+}
+
+.home-introduction {
+  background: #fff;
+  margin-top: 50px;
+  text-align: center;
+  color: #212529;
+  width: 100%;
+}
+
+.home-introduction h1 {
+  font-size: 56px;
+  padding: 50px 0;
+}
+
+.home-introduction p {
+  font-size: 20px;
+  line-height: 35px;
+  word-spacing: 5px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.notHidden {
+  animation: fadeIn 1s ease-in both;
+}
+
+.hidden {
+  display: none;
+}
+
+.home-introduction-first-part {
+  padding-bottom: 50px;
+}
+
+.home-introduction-second-part {
+  opacity: 1;
+  padding-bottom: 60px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.home-section-intro-link-container {
+  margin-top: 10px;
+}
+
+.home-introduction a {
+  padding: 10px 20px;
+  background: #ffb951;
+  color: #212529;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.home-section-intro-link:hover {
+  animation: changeIntroColor 0.2s forwards;
+}
+
+@keyframes changeIntroColor {
+  from {
+    background: #ffb951;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}
+
+.home-breakline {
+  background: #fff;
+  padding: 5px;
+}
+
+.home-about {
+  background: #fff;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  z-index: 99;
+  position: relative;
+}
+
+.home-about h2 {
+  text-align: center;
+  font-size: 56px;
+  margin-bottom: 50px;
+}
+
+.home-about-features-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 768px) {
+  .header-img {
+    height: 30vh;
+  }
+  .home-section-motto {
+    transform: translate(0, -150%);
+  }
+  .home-section-motto-first {
+    font-size: 32px;
+  }
+  .home-section-motto-second {
+    font-size: 18px;
+  }
+  .home-page header {
+    padding: 0;
+  }
+
+  .home-introduction h1,
+  .home-about h2 {
+    font-size: 30px;
+  }
+
+  .home-introduction p {
+    font-size: 16px;
+  }
+}

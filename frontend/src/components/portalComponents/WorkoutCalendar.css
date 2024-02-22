@@ -1,0 +1,109 @@
+.react-calendar {
+  margin-top: 100px;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-around;
+  gap: 200px;
+  margin-bottom: 20px;
+}
+
+.react-calendar__navigation__arrow {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  background: #f1f3f5;
+  color: #212529;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.react-calendar__navigation__arrow:hover {
+  animation: changeMonthColor 0.2s forwards;
+}
+
+@keyframes changeMonthColor {
+  from {
+    background: #f1f3f5;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}
+
+.react-calendar__navigation__label {
+  pointer-events: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  background: #f1f3f5;
+}
+
+.react-calendar__month-view__weekdays {
+  text-decoration: none;
+  color: #f1f3f5;
+  background: #212529;
+  padding: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.react-calendar__month-view__days {
+  background-color: #f1f3f5;
+  color: #212529;
+}
+
+.react-calendar__month-view__days__day {
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  outline: 1px solid;
+  outline-offset: -5px;
+  border-radius: 5px;
+}
+
+.react-calendar__tile--active {
+  color: #ffb951;
+}
+
+.create-new-workout-btn-container {
+  margin: 50px 0 0 0;
+}
+
+.create-new-workout-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #212529;
+  background: #ffb951;
+  font-weight: 700;
+}
+
+.create-new-workout-btn:hover {
+  animation: changeCreateWorkoutButton 0.2s forwards;
+}
+
+@keyframes changeCreateWorkoutButton {
+  from {
+    background: #ffb951;
+    color: #212529;
+  }
+  to {
+    background: #212529;
+    color: #f1f3f5;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .react-calendar__navigation {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,39 @@
+.myportal-changecredentials {
+  margin-top: 100px;
+}
+
+.myportal-changecredentials-description {
+  font-size: 18px;
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+.myportal-changecredentials-option:not(:first-child) {
+  margin-top: 10px;
+}
+
+.options-container {
+  margin-top: 20px;
+}
+
+.options-container p {
+  margin-bottom: 10px;
+}
+
+.myportal-changecredentials-option {
+  cursor: pointer;
+  color: #212529;
+  display: inline-block;
+  padding: 5px;
+}
+
+.account-selected {
+  margin-left: 10px;
+  transition: margin 0.2s;
+}
+
+@media screen and (max-width: 768px) {
+  .myportal-changecredentials-description {
+    font-size: 16px;
+  }
+}
