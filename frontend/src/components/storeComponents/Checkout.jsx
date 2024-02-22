@@ -11,15 +11,15 @@ const Checkout = () => {
   const { basketItems, setBasketItems, finalPrice, setFinalPrice, id } = useContext(ProductTypeContext);
   const { loggedIn } = useContext(LoginContext);
 
-  const URL = import.meta.env.VITE_URL;
-
   useEffect(() => {
     setLoading(true);
 
     const fetchProductDetails = async () => {
       try {
         const productIds = basketItems.map((item) => item.name);
-        const responses = await Promise.all(productIds.map((productId) => axios.get(`${URL}products/${productId}`)));
+        const responses = await Promise.all(
+          productIds.map((productId) => axios.get(`https://fitness-backend1.onrender.com/api/products/${productId}`))
+        );
 
         const productDetails = responses.map((response) => response.data.product);
         setUniqueProducts(getUniqueProducts(productDetails));
@@ -66,7 +66,7 @@ const Checkout = () => {
   const handleIncrement = async (productId) => {
     try {
       const response = await axios.patch(
-        `${URL}users/addToBasket`,
+        "$https://fitness-backend1.onrender.com/api/users/addToBasket",
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );
@@ -80,7 +80,7 @@ const Checkout = () => {
   const handleDecrement = async (productId) => {
     try {
       const response = await axios.patch(
-        `${URL}users/deleteFromBasket`,
+        "https://fitness-backend1.onrender.com/api/users/deleteFromBasket",
         { removedItem: { productId } },
         { params: { _id: id } }
       );
@@ -94,7 +94,7 @@ const Checkout = () => {
   const removeItemFromBasket = async (productId) => {
     try {
       const response = await axios.patch(
-        `${URL}users/removeFromBasket`,
+        "https://fitness-backend1.onrender.com/api/users/removeFromBasket",
         { removedItem: { name: productId } },
         { params: { _id: id } }
       );
@@ -110,7 +110,7 @@ const Checkout = () => {
       setBasketItems([]);
       setFinalPrice(0);
 
-      await axios.patch(`${URL}users/clearBasket`, {
+      await axios.patch("https://fitness-backend1.onrender.com/api/users/clearBasket", {
         params: { _id: id },
       });
 

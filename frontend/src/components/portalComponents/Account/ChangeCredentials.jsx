@@ -32,13 +32,11 @@ const ChangeCredentials = ({
 
   const navigate = useNavigate();
 
-  const URL = import.meta.env.VITE_URL;
-
   useEffect(() => {
     if (loggedIn) {
       const { email } = JSON.parse(localStorage.getItem("user"));
 
-      axios.get(`${URL}users/`, { params: { email: email } }).then((data) => {
+      axios.get("https://fitness-backend1.onrender.com/api/users/", { params: { email: email } }).then((data) => {
         setId(data.data.user._id);
       });
     }
@@ -47,7 +45,11 @@ const ChangeCredentials = ({
   const handleChangeUsername = () => {
     if (loggedIn) {
       axios
-        .patch(`${URL}users/changeUsername`, { username: username }, { params: { _id: id } })
+        .patch(
+          "https://fitness-backend1.onrender.com/api/users/changeUsername",
+          { username: username },
+          { params: { _id: id } }
+        )
         .then(() => {
           setUsername("");
           navigate("/myportal/account");
@@ -61,7 +63,7 @@ const ChangeCredentials = ({
   const handleChangeEmail = () => {
     axios
       .patch(
-        `${URL}users/changeEmail`,
+        "https://fitness-backend1.onrender.com/api/users/changeEmail",
         {
           oldEmail: oldEmail,
           newEmail: newEmail,
@@ -80,7 +82,7 @@ const ChangeCredentials = ({
   const handleChangePassword = () => {
     axios
       .patch(
-        `${URL}users/changePassword`,
+        "https://fitness-backend1.onrender.com/api/users/changePassword",
         {
           oldPassword: oldPassword,
           newPassword: newPassword,

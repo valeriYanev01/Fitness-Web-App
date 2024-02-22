@@ -14,12 +14,10 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const URL = import.meta.env.VITE_URL;
-
   const signup = () => {
     setSignupError(null);
     axios
-      .post(`${URL}users/signup`, { email, password, confirmPassword })
+      .post("https://fitness-backend1.onrender.com/api/users/signup", { email, password, confirmPassword })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         setLoggedIn(true);

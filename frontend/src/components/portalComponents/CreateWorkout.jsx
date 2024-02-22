@@ -13,14 +13,12 @@ const CreateWorkout = () => {
   const { setShowSettings, setLoading } = useContext(WorkoutContext);
   const { user } = useContext(LoginContext);
 
-  const URL = import.meta.env.VITE_URL;
-
   const newWorkout = () => {
     setLoading(true);
     setError("");
     axios
       .post(
-        `${URL}workouts`,
+        "https://fitness-backend1.onrender.com/api/workouts",
         { title: exercise, load: weight, reps },
         { headers: { Authorization: `Bearer ${user.token}` } }
       )
