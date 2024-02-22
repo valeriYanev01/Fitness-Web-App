@@ -66,11 +66,10 @@ const Checkout = () => {
   const handleIncrement = async (productId) => {
     try {
       const response = await axios.patch(
-        "$https://fitness-backend1.onrender.com/api/users/addToBasket",
+        "https://fitness-backend1.onrender.com/api/users/addToBasket",
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );
-      console.log(response);
       const updatedBasket = response.data.updatedInfo.basket;
       setBasketItems(updatedBasket);
     } catch (error) {

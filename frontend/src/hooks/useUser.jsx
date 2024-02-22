@@ -11,7 +11,6 @@ const useUser = () => {
       axios
         .get("https://fitness-backend1.onrender.com/api/users/", { params: { email: email } })
         .then((data) => {
-          console.log(data);
           setUsername(data.data.user.username);
         })
         .catch((err) => {
