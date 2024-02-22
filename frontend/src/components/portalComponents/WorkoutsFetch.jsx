@@ -30,6 +30,7 @@ const WorkoutsFetch = () => {
             },
           })
           .then((data) => {
+            console.log(data);
             setWorkouts(data.data.workouts);
             setLoading(false);
           })
