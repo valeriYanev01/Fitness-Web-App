@@ -13,6 +13,7 @@ const Login = () => {
   const { setLoggedIn } = useContext(LoginContext);
 
   const URL = import.meta.env.VITE_URL;
+  console.log(URL);
 
   const login = () => {
     setLoginError(null);
