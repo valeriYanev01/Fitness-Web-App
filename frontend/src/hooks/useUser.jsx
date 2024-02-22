@@ -13,6 +13,7 @@ const useUser = () => {
       axios
         .get(`${URL}users/`, { params: { email: email } })
         .then((data) => {
+          console.log(data);
           setUsername(data.data.user.username);
         })
         .catch((err) => {
