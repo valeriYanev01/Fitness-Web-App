@@ -82,13 +82,13 @@ userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email });
 
   if (!user) {
-    throw Error("User not found!");
+    throw Error("Wrong credentials!");
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password);
 
   if (!passwordMatch) {
-    throw Error("Wrong password!");
+    throw Error("Wrong credentials!");
   }
 
   return user;
