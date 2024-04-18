@@ -15,11 +15,20 @@ const Products = () => {
   useEffect(() => {
     setLoaded(false);
 
-    axios.get("https://backend-ten-bice.vercel.app/api/products", { params: { type: type } }).then((data) => {
-      setProducts(data.data.getProducts);
-      setLoaded(true);
-      setLoadProducts(true);
-    });
+    try {
+      axios
+        .get("https://backend-ten-bice.vercel.app/api/products", {
+          params: { type: type },
+          headers: { "Access-Control-Allow-Origin": "*" },
+        })
+        .then((data) => {
+          setProducts(data.data.getProducts);
+          setLoaded(true);
+          setLoadProducts(true);
+        });
+    } catch (err) {
+      console.log(err.err);
+    }
   }, [type, loadProducts]);
 
   return (
