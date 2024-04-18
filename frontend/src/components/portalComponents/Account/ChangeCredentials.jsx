@@ -36,7 +36,7 @@ const ChangeCredentials = ({
     if (loggedIn) {
       const { email } = JSON.parse(localStorage.getItem("user"));
 
-      axios.get("https://fitness-backend1.onrender.com/api/users/", { params: { email: email } }).then((data) => {
+      axios.get("https://backend-ten-bice.vercel.app/api/users/", { params: { email: email } }).then((data) => {
         setId(data.data.user._id);
       });
     }
@@ -46,7 +46,7 @@ const ChangeCredentials = ({
     if (loggedIn) {
       axios
         .patch(
-          "https://fitness-backend1.onrender.com/api/users/changeUsername",
+          "https://backend-ten-bice.vercel.app/api/users/changeUsername",
           { username: username },
           { params: { _id: id } }
         )
@@ -63,7 +63,7 @@ const ChangeCredentials = ({
   const handleChangeEmail = () => {
     axios
       .patch(
-        "https://fitness-backend1.onrender.com/api/users/changeEmail",
+        "https://backend-ten-bice.vercel.app/api/users/changeEmail",
         {
           oldEmail: oldEmail,
           newEmail: newEmail,
@@ -82,7 +82,7 @@ const ChangeCredentials = ({
   const handleChangePassword = () => {
     axios
       .patch(
-        "https://fitness-backend1.onrender.com/api/users/changePassword",
+        "https://backend-ten-bice.vercel.app/api/users/changePassword",
         {
           oldPassword: oldPassword,
           newPassword: newPassword,

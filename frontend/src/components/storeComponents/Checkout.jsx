@@ -18,7 +18,7 @@ const Checkout = () => {
       try {
         const productIds = basketItems.map((item) => item.name);
         const responses = await Promise.all(
-          productIds.map((productId) => axios.get(`https://fitness-backend1.onrender.com/api/products/${productId}`))
+          productIds.map((productId) => axios.get(`https://backend-ten-bice.vercel.app/api/products/${productId}`))
         );
 
         const productDetails = responses.map((response) => response.data.product);
@@ -66,7 +66,7 @@ const Checkout = () => {
   const handleIncrement = async (productId) => {
     try {
       const response = await axios.patch(
-        "https://fitness-backend1.onrender.com/api/users/addToBasket",
+        "https://backend-ten-bice.vercel.app/api/users/addToBasket",
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );
@@ -80,7 +80,7 @@ const Checkout = () => {
   const handleDecrement = async (productId) => {
     try {
       const response = await axios.patch(
-        "https://fitness-backend1.onrender.com/api/users/deleteFromBasket",
+        "https://backend-ten-bice.vercel.app/api/users/deleteFromBasket",
         { removedItem: { productId } },
         { params: { _id: id } }
       );
@@ -94,7 +94,7 @@ const Checkout = () => {
   const removeItemFromBasket = async (productId) => {
     try {
       const response = await axios.patch(
-        "https://fitness-backend1.onrender.com/api/users/removeFromBasket",
+        "https://backend-ten-bice.vercel.app/api/users/removeFromBasket",
         { removedItem: { name: productId } },
         { params: { _id: id } }
       );
@@ -110,7 +110,7 @@ const Checkout = () => {
       setBasketItems([]);
       setFinalPrice(0);
 
-      await axios.patch("https://fitness-backend1.onrender.com/api/users/clearBasket", {
+      await axios.patch("https://backend-ten-bice.vercel.app/api/users/clearBasket", {
         params: { _id: id },
       });
 

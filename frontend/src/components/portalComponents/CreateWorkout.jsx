@@ -18,7 +18,7 @@ const CreateWorkout = () => {
     setError("");
     axios
       .post(
-        "https://fitness-backend1.onrender.com/api/workouts",
+        "https://backend-ten-bice.vercel.app/api/workouts",
         { title: exercise, load: weight, reps },
         { headers: { Authorization: `Bearer ${user.token}` } }
       )

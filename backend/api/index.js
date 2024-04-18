@@ -6,9 +6,9 @@ import compression from "compression";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
-import { userRouter } from "./routes/userRoutes.js";
-import { workoutRouter } from "./routes/workoutRoutes.js";
-import { productRouter } from "./routes/produtRouter.js";
+import { userRouter } from "../routes/userRoutes.js";
+import { workoutRouter } from "../routes/workoutRoutes.js";
+import { productRouter } from "../routes/produtRouter.js";
 
 process.env.NODE_ENV = "production";
 

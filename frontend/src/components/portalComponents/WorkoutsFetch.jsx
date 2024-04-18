@@ -21,7 +21,7 @@ const WorkoutsFetch = () => {
     if (user) {
       const fetchData = () =>
         axios
-          .get("https://fitness-backend1.onrender.com/api/workouts", {
+          .get("https://backend-ten-bice.vercel.app/api/workouts", {
             params: { date: workoutDate },
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -41,7 +41,7 @@ const WorkoutsFetch = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://fitness-backend1.onrender.com/api/workouts/${id}`, {
+      .delete(`https://backend-ten-bice.vercel.app/api/workouts/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then(() => {
@@ -56,7 +56,7 @@ const WorkoutsFetch = () => {
   const handleUpdate = (id) => {
     axios
       .put(
-        `https://fitness-backend1.onrender.com/api/workouts/${id}`,
+        `https://backend-ten-bice.vercel.app/api/workouts/${id}`,
         { title, load, reps },
         { headers: { Authorization: `Bearer ${user.token}` } }
       )

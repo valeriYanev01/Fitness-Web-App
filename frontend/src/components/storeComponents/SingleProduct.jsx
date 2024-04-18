@@ -14,7 +14,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`https://fitness-backend1.onrender.com/api/products/${productId}`);
+        const response = await axios.get(`https://backend-ten-bice.vercel.app/api/products/${productId}`);
         setProductData(response.data.product);
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -27,7 +27,7 @@ const SingleProduct = () => {
   const addItemToBasket = async () => {
     try {
       const response = await axios.patch(
-        "https://fitness-backend1.onrender.com/api/users/addToBasket",
+        "https://backend-ten-bice.vercel.app/api/users/addToBasket",
         { newBasket: [{ name: productId }] },
         { params: { _id: id } }
       );

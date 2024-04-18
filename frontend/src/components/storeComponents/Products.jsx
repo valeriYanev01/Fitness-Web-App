@@ -15,7 +15,7 @@ const Products = () => {
   useEffect(() => {
     setLoaded(false);
 
-    axios.get("https://fitness-backend1.onrender.com/api/products", { params: { type: type } }).then((data) => {
+    axios.get("https://backend-ten-bice.vercel.app/api/products", { params: { type: type } }).then((data) => {
       setProducts(data.data.getProducts);
       setLoaded(true);
       setLoadProducts(true);
