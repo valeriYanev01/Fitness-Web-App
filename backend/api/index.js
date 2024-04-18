@@ -21,16 +21,8 @@ const PORT = process.env.PORT || 3000;
 
 const limiter = rateLimit({ windowMs: 1 * 60 * 1000, limit: 200 });
 
-const corsOptions = {
-  origin: "https://mindcraft-fitness.vercel.app",
-  optionsSuccessStatus: 200,
-  credentials: true,
-};
-
 app.use(express.json());
-// app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
-
+app.use(cors());
 app.use(compression());
 app.use(
   helmet.contentSecurityPolicy({ directives: { "script-src": ["'self'", "code.jquery.com", "cdn.jsdeliver.net"] } })

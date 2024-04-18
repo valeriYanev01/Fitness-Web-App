@@ -15,13 +15,11 @@ const Products = () => {
   useEffect(() => {
     setLoaded(false);
 
-    axios
-      .get("https://backend-ten-bice.vercel.app/api/products", { params: { type: type }, withCredentials: true })
-      .then((data) => {
-        setProducts(data.data.getProducts);
-        setLoaded(true);
-        setLoadProducts(true);
-      });
+    axios.get("https://backend-ten-bice.vercel.app/api/products", { params: { type: type } }).then((data) => {
+      setProducts(data.data.getProducts);
+      setLoaded(true);
+      setLoadProducts(true);
+    });
   }, [type, loadProducts]);
 
   return (
