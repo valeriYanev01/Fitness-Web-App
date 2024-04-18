@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div className="navigation-container">
       <nav className="navigation">
-        <Link to="/Mindcraft-Fitness/">
+        <Link to="/">
           <Logo />
         </Link>
         <a className="icon">
