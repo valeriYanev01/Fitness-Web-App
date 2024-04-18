@@ -15,7 +15,7 @@ const Login = () => {
   const login = () => {
     setLoginError(null);
     axios
-      .post("https://fitness-backend1.onrender.com/api/users/login", { email, password })
+      .post("https://backend-ten-bice.vercel.app/api/users/login", { email, password })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         navigate("/myportal");
