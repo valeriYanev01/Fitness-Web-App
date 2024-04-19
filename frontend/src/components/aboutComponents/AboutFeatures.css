@@ -1,6 +1,5 @@
 .about-features-container {
   background-color: #f1f3f5;
-  border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -24,12 +23,11 @@
 }
 
 .about-feature-description-container {
-  border: 2px solid #212529;
-  border-radius: 8px;
   padding: 10px;
 }
 
 .about-feature-description {
   color: #555;
   margin-bottom: 10px;
+  letter-spacing: 1px;
 }

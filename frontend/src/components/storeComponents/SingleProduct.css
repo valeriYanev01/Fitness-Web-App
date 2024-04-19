@@ -14,12 +14,11 @@
 
 .single-product-img {
   width: 300px;
-  mix-blend-mode: multiply;
   transition: transform 0.2s;
 }
 
 .single-product-img:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 .single-product-name,

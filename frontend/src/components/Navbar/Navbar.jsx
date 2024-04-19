@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../Logo";
 import Links from "./Links";
 import "./Navbar.css";
@@ -9,6 +9,8 @@ import { LoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const navigate = useNavigate();
 
   const { loggedIn } = useContext(LoginContext);
 
@@ -39,7 +41,13 @@ const Navbar = () => {
                   <Link className="navigation-menu-link" to="checkout">
                     Basket
                   </Link>
-                  <div className="navigation-menu-link" onClick={logout}>
+                  <div
+                    className="navigation-menu-link"
+                    onClick={() => {
+                      logout();
+                      navigate("/");
+                    }}
+                  >
                     Logout
                   </div>
                 </div>

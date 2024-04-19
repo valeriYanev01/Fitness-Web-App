@@ -1,15 +1,6 @@
 .store-page {
   display: flex;
   gap: 50px;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 167, 38, 0.2),
-    rgb(255, 167, 139, 0.1),
-    rgb(255, 193, 216, 0.1),
-    rgb(255, 227, 255, 0.1),
-    rgb(255, 255, 255, 0.1),
-    rgb(255, 167, 38, 0.2)
-  );
 }
 
 .store-introduction {
