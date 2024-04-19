@@ -9,7 +9,7 @@ const useUser = () => {
     if (localStorage.getItem("user")) {
       const { email } = JSON.parse(localStorage.getItem("user"));
       axios
-        .get("https://fitness-backend1.onrender.com/api/users/", { params: { email: email } })
+        .get("https://backend-ten-bice.vercel.app/api/users/", { params: { email: email } })
         .then((data) => {
           setUsername(data.data.user.username);
         })

@@ -78,6 +78,7 @@
 
 .products-img {
   width: 150px;
+  mix-blend-mode: multiply;
 }
 
 @media screen and (max-width: 768px) {
