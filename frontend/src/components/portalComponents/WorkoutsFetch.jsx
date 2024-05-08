@@ -74,7 +74,7 @@ const WorkoutsFetch = () => {
       {loading ? (
         <div className="workouts-fetch-loading">Loading</div>
       ) : workouts.length === 0 ? (
-        <div>No Workouts</div>
+        <div className="workouts-fetch-no-workouts">No Workouts</div>
       ) : (
         <div className="workouts-fetch">
           {workouts.length > 0 ? (
@@ -95,7 +95,7 @@ const WorkoutsFetch = () => {
               />
             ))
           ) : (
-            <div className="workouts-fetch-no-workouts">No workouts!</div>
+            <div>No workouts!</div>
           )}
         </div>
       )}
