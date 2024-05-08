@@ -69,7 +69,7 @@
   animation: changeWorkoutButton 0.2s forwards;
 }
 
-.workouts-fetch-no-workout {
+.workouts-fetch-no-workouts {
   margin-top: 20px;
 }
 
