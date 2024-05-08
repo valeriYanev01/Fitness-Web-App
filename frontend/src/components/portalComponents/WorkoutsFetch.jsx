@@ -95,7 +95,7 @@ const WorkoutsFetch = () => {
               />
             ))
           ) : (
-            <div>No workouts!</div>
+            <div className="workouts-fetch-no-workouts">No workouts!</div>
           )}
         </div>
       )}

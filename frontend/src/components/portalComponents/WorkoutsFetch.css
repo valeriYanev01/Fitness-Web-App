@@ -69,6 +69,10 @@
   animation: changeWorkoutButton 0.2s forwards;
 }
 
+.workouts-fetch-no-workout {
+  margin-top: 20px;
+}
+
 @keyframes changeWorkoutButton {
   from {
     background: #ffb951;
