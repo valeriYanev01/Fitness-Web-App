@@ -17,7 +17,7 @@ const Signup = () => {
   const signup = () => {
     setSignupError(null);
     axios
-      .post("https://backend-ten-bice.vercel.app/users/signup", { email, password, confirmPassword })
+      .post("https://backend-ten-bice.vercel.app/api/users/signup", { email, password, confirmPassword })
       .then((data) => {
         localStorage.setItem("user", JSON.stringify(data.data));
         setLoggedIn(true);
