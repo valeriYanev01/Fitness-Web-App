@@ -2,9 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import compression from "compression";
-import helmet from "helmet";
-import rateLimit from "express-rate-limit";
 
 import { userRouter } from "../routes/userRoutes.js";
 import { workoutRouter } from "../routes/workoutRoutes.js";
@@ -19,15 +16,8 @@ const app = express();
 const URI = process.env.URI;
 const PORT = process.env.PORT || 3000;
 
-const limiter = rateLimit({ windowMs: 1 * 60 * 1000, limit: 200 });
-
 app.use(express.json());
 app.use(cors());
-app.use(compression());
-app.use(
-  helmet.contentSecurityPolicy({ directives: { "script-src": ["'self'", "code.jquery.com", "cdn.jsdeliver.net"] } })
-);
-app.use(limiter);
 
 app.use("/api/workouts", workoutRouter);
 app.use("/api/users", userRouter);
